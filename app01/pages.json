@@ -37,7 +37,67 @@
             }
             
         }
-    ]
+        ,{
+            "path" : "pages/classify/classify",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/surprisePresent/surprisePresent",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/personality/personality",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"tabBar":{
+		"iconWidth":"25px",
+		"selectedColor":"#ff0000",
+		"list":[
+			{
+				"iconPath":"static/index.png",
+				"pagePath":"pages/index/index",
+				"selectedIconPath":"static/index_ed.png",
+				"text":"首页"
+			},{
+				"iconPath":"static/classify.png",
+				"pagePath":"pages/classify/classify",
+				"selectedIconPath":"static/classify_ed.png",
+				"text":"分类"
+			},{
+				"iconPath":"static/surprise.png",
+				"pagePath":"pages/surprisePresent/surprisePresent",
+				"text":"惊喜"
+				
+			},{
+				"iconPath":"static/shoppingcar.png",
+				"pagePath":"pages/shoppingCar/shoppingCar",
+				"selectedIconPath":"static/shoppingcar_ed.png",
+				"text":"购物车"
+			},{
+				"iconPath":"static/personality.png",
+				"pagePath":"./pages/personality/personality",
+				"text":"个人主页"
+				
+			}
+			
+		]
+	}
 	// "globalStyle": {
 	// 	"navigationBarTextStyle": "black",
 	// 	// "navigationBarTitleText": "uni-app",

@@ -41,7 +41,7 @@ export default {
 			uni.navigateTo({
 				url:"../../pages/submit/submit",
 				success() {
-					alert(1111)
+					
 				},
 				fail() {
 					
