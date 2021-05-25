@@ -37,8 +37,36 @@
 						</swiper-item>
 					</swiper>
 				</view>
-				<view class="main-two" v-for="(item) in 20" :key="item">
-					<text>{{item}}</text>
+				<view class="main-two">
+					<view style="display: flex;">
+						<view style="flex: 1;margin: 10px;"><h3 style="text-align: right;">来电好货</h3></view>
+						<view style="flex: 1;margin: 10px;"><h3>国潮风尚</h3></view>
+					</view>
+					<view style="display: flex;">
+						<view class="call" v-for="(item) in callBusiness">
+							<text>{{item.intro}}</text>
+							<image :src="item.url"></image>
+						</view>
+					</view>
+				</view>
+				<view class="main-three">
+					<view class="seckill">
+						<view class="seckill_left">
+							<text>京东秒杀</text>
+							<text style="margin-left: 10px;color: red;">{{hourGap-1}}</text>
+							<image src="../../static/times.png" style="width: 20px;height: 20px;"></image>
+							<view style="width: 15px;height: 20px;background-color: red;border-radius: 5px;"></view>
+							<text>:</text>
+							<view style="width: 15px;height: 20px;background-color: red;border-radius: 5px;"></view>
+							<text>:</text>
+							<view style="width: 15px;height: 20px;background-color: red;border-radius: 5px;"></view>
+						</view>
+						<view class="seckill_right">
+							
+						</view>
+						
+						
+					</view>
 				</view>
 			</scroll-view>
 		</view>
@@ -49,12 +77,17 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'  ,
+				title: 'Hello',
 				swiperImg:[],
 				lifeServices:[],
+				callBusiness:[],
+				hourGap:0,
+				minuteGap:0,
+				secondGap:0
 			}
 		},
 		onLoad() {
+			// 轮播图图片
 			this.swiperImg=[
 				"../../static/nav1.jpg",
 				"../../static/nav2.jpg",
@@ -65,6 +98,7 @@
 				"../../static/nav7.jpg",
 				"../../static/nav8.jpg",
 			]
+			// 生活服务所有图标
 			this.lifeServices=[
 				{operation:"京东超市",url:"../../static/supermarket.png"},
 				{operation:"数码电器",url:"../../static/digit.png"},
@@ -85,8 +119,20 @@
 				{operation:"京东旅行",url:"../../static/travel.png"},
 				{operation:"拍拍二手",url:"../../static/secondhand.png"},
 				{operation:"物流查询",url:"../../static/logistic.png"},
-				// {operation:"全部",url:"../../static/all.png"},
+				{operation:"全部",url:"../../static/all.png"},
 			]
+			// 来电好货，国潮风尚
+			this.callBusiness=[
+				{intro:"正品直邮",url:"../../static/call1.jpg"},
+				{intro:"3C大放价",url:"../../static/call2.jpg"},
+				{intro:"国货正当时",url:"../../static/call3.jpg"},
+				{intro:"都是你爱的",url:"../../static/call4.jpg"},
+				
+			],
+			this.hourGap=new Date().getHours()
+			this.minuteGap=new Date().getMinutes()
+			this.secondGap=new Date().getSeconds()
+			console.log(this.hourGap,this.minuteGap,this.secondGap);
 		},
 		methods: {
 
@@ -125,34 +171,91 @@ uni-image{
 .main{
 	background-color: #f6f6f6;
 	border-radius: 10px 10px 0 0;
+	padding: 10px;
+	box-sizing: border-box;
 	uni-swiper{
 		height: 190px;
 	}
-	.swiper-item{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-wrap: wrap;
-		.life-service{
-			width: 20%;
-			height: 80px;
+	.main-one{
+		.swiper-item{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			.life-service{
+				width: 20%;
+				height: 80px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				font-size: .6rem;
+				color: #666666;
+				uni-image{
+					display: flex;
+					justify-content: center;
+				}
+				/deep/uni-image>img,/deep/uni-image>div{
+					width: 60% !important;
+					height: 90% !important;
+				}
+			}
+		}
+	}
+	.main-two{
+		width: 100%;
+		height: 150px;
+		background-color: white;
+		.call{
+			width: 25%;
+			height: 125px;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			font-size: .6rem;
-			color: #666666;
-			uni-image{
+			font-size: 14px;
+			/deep/uni-image>div{
+				width: 70%;
+				height: 68%;
+			}
+		}
+	}
+	.main-three{
+		width: 100%;
+		height: 150px;
+		background-color: white;
+		margin-top: 15px;
+		border-radius: 10px;
+		.seckill{
+			width: 100%;
+			height: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: baseline;
+			background-image: url(../../static/bg_small.png);
+			background-size: cover;
+			background-repeat: no-repeat;
+			.seckill_left{
+				width: 70%;
+				height: 40px;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				margin-left: 10px;
+				/deep/uni-image{
+					margin-top: 0;
+					margin-right: 10px;
+				}
+			}
+			.seckill_right{
+				width: 30%;
+			
 				display: flex;
 				justify-content: center;
+				align-items: center;
 			}
-			/deep/uni-image>img,/deep/uni-image>div{
-				width: 60% !important;
-				height: 90% !important;
-			}
+		}
 	}
-	}
-	
 }
 
 </style>
