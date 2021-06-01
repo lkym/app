@@ -62,6 +62,9 @@ export default {
 	background-color: red;
 	display: flex;
 	justify-content: space-around;
+	position: fixed;
+	top: 0;
+	z-index: 9999;
 	.head-menu{
 		width: 15%;
 		height: 44px;

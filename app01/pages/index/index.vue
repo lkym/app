@@ -1,75 +1,83 @@
 <template>
 	<view class="content">
 		<top></top>
-		<view class="">
-			<swiper :indicator-dots="true" 
-					:autoplay="true" 
-					:interval="3000" 
-					:duration="1000" 
-					:circular="true"
-					>
-				<swiper-item v-for="(img,index) in swiperImg" :key="img">
-					<!-- <view class="swiper-item"></view> -->
-					<image style="border-radius: 10px;" :src="img" mode=""></image>
-				</swiper-item>
-			</swiper>
-			</swiper>
-		</view>
-		<view class="main">
-			<scroll-view scroll-y="true" >
-				<view class="main-one">
-					<swiper :indicator-dots="true" :autoplay="false" :interval="3000" :duration="1000">
-						<swiper-item>
-							<view class="swiper-item" >
-								<view class="life-service" v-for="(item,index) in lifeServices.slice(0,10)" :key="index">
-									<image :src="item.url" mode=""></image>
-									<text>{{item.operation}}</text>
-								</view>
+		<scroll-view scroll-y="true" style="margin-top: 44px;">
+			<view class="">
+				<swiper :indicator-dots="true" 
+						:autoplay="true" 
+						:interval="3000" 
+						:duration="1000" 
+						:circular="true"
+						>
+					<swiper-item v-for="(img,index) in swiperImg" :key="img">
+						<!-- <view class="swiper-item"></view> -->
+						<image style="border-radius: 10px;" :src="img" mode=""></image>
+					</swiper-item>
+				</swiper>
+				</swiper>
+			</view>
+			<view class="main">
+			<!-- <scroll-view scroll-y="true" > -->
+			<view class="main-one">
+				<swiper :indicator-dots="true" :autoplay="false" :interval="3000" :duration="1000">
+					<swiper-item>
+						<view class="swiper-item" >
+							<view class="life-service" v-for="(item,index) in lifeServices.slice(0,10)" :key="index">
+								<image :src="item.url" mode=""></image>
+								<text>{{item.operation}}</text>
 							</view>
-						</swiper-item>
-						<swiper-item>
-							<view class="swiper-item" >
-								<view class="life-service" v-for="(item,index) in lifeServices.slice(10)" :key="index">
-									<image :src="item.url" mode=""></image>
-									<text>{{item.operation}}</text>
-								</view>
+						</view>
+					</swiper-item>
+					<swiper-item>
+						<view class="swiper-item" >
+							<view class="life-service" v-for="(item,index) in lifeServices.slice(10)" :key="index">
+								<image :src="item.url" mode=""></image>
+								<text>{{item.operation}}</text>
 							</view>
-						</swiper-item>
-					</swiper>
+						</view>
+					</swiper-item>
+				</swiper>
+			</view>
+			<view class="main-two">
+				<view style="display: flex;">
+					<view style="flex: 1;margin: 10px;"><h3 style="text-align: right;">来电好货</h3></view>
+					<view style="flex: 1;margin: 10px;"><h3>国潮风尚</h3></view>
 				</view>
-				<view class="main-two">
-					<view style="display: flex;">
-						<view style="flex: 1;margin: 10px;"><h3 style="text-align: right;">来电好货</h3></view>
-						<view style="flex: 1;margin: 10px;"><h3>国潮风尚</h3></view>
-					</view>
-					<view style="display: flex;">
-						<view class="call" v-for="(item) in callBusiness">
-							<text>{{item.intro}}</text>
-							<image :src="item.url"></image>
-						</view>
-					</view>
-				</view>
-				<view class="main-three">
-					<view class="seckill">
-						<view class="seckill_left">
-							<text>京东秒杀</text>
-							<text style="margin-left: 10px;color: red;">{{hourGap-1}}</text>
-							<image src="../../static/times.png" style="width: 20px;height: 20px;"></image>
-							<view style="width: 15px;height: 20px;background-color: red;border-radius: 5px;"></view>
-							<text>:</text>
-							<view style="width: 15px;height: 20px;background-color: red;border-radius: 5px;"></view>
-							<text>:</text>
-							<view style="width: 15px;height: 20px;background-color: red;border-radius: 5px;"></view>
-						</view>
-						<view class="seckill_right">
-							
-						</view>
-						
-						
+				<view style="display: flex;">
+					<view class="call" v-for="(item) in callBusiness">
+						<text>{{item.intro}}</text>
+						<image :src="item.url"></image>
 					</view>
 				</view>
-			</scroll-view>
-		</view>
+			</view>
+			<view class="main-three">
+				<view class="seckill">
+					<view class="seckill_left">
+						<text>京东秒杀</text>
+						<text style="margin-left: 10px;color: red;">{{hourGap-1}}</text>
+						<image src="../../static/times.png" style="width: 20px;height: 20px;"></image>
+						<view style="width: 15px;height: 20px;background-color: red;border-radius: 5px;"></view>
+						<text>:</text>
+						<view style="width: 15px;height: 20px;background-color: red;border-radius: 5px;"></view>
+						<text>:</text>
+						<view style="width: 15px;height: 20px;background-color: red;border-radius: 5px;"></view>
+					</view>
+					<view class="seckill_right">
+						<text>更多秒杀</text>
+						<image src="../../static/moer_seckill.png" mode=""></image>
+					</view>
+				</view>
+				<view class="seckill-goods">
+					<view class="seckill-goods-price" v-for="(item,index) in seckillGoods" :key="index" >
+						<image :src="item.url" mode=""></image>
+						<text style="color: red;">￥{{item.countPrice}}</text>
+						<text style="text-decoration: line-through;color: grey;">￥{{item.originPrice}}</text>
+					</view>
+				</view>
+			</view>
+			<!-- </scroll-view> -->
+			</view>
+		</scroll-view>
 	</view>
 </template>
 
@@ -83,7 +91,8 @@
 				callBusiness:[],
 				hourGap:0,
 				minuteGap:0,
-				secondGap:0
+				secondGap:0,
+				seckillGoods:[],
 			}
 		},
 		onLoad() {
@@ -129,6 +138,15 @@
 				{intro:"都是你爱的",url:"../../static/call4.jpg"},
 				
 			],
+			// 秒杀商品
+			this.seckillGoods=[
+				{countPrice:'19.8',originPrice:'50',url:'../../static/seckill1.jpg'},
+				{countPrice:'6.18',originPrice:'19.9',url:'../../static/seckill2.jpg'},
+				{countPrice:'6929',originPrice:'7999',url:'../../static/seckill3.jpg'},
+				{countPrice:'3189',originPrice:'9999',url:'../../static/seckill4.jpg'},
+				{countPrice:'138',originPrice:'188',url:'../../static/seckill5.jpg'},
+				{countPrice:'1699',originPrice:'2799',url:'../../static/seckill6.jpg'},
+			]
 			this.hourGap=new Date().getHours()
 			this.minuteGap=new Date().getMinutes()
 			this.secondGap=new Date().getSeconds()
@@ -230,7 +248,7 @@ uni-image{
 			width: 100%;
 			height: 40px;
 			display: flex;
-			justify-content: center;
+			justify-content: space-between;
 			align-items: baseline;
 			background-image: url(../../static/bg_small.png);
 			background-size: cover;
@@ -249,10 +267,37 @@ uni-image{
 			}
 			.seckill_right{
 				width: 30%;
-			
+				height: 40px;
 				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+				/deep/uni-image{
+					width: 25%;
+					height: 40%;
+					margin-left: 5px;
+				}
+				/deep/span{
+					color: red;
+					font-size:12px;
+				}
+				/deep/uni-image>div, /deep/uni-image>img{
+					width: 40%;
+					height: 75%;
+				}
+			}	
+		}
+		.seckill-goods{
+			width: 100%;
+			height: 110px;
+			display: flex;
+			justify-content: space-around;
+			.seckill-goods-price{
+				display: flex;
+				flex-direction: column;
 				justify-content: center;
 				align-items: center;
+				font-size: 14px;
+				flex: 1;
 			}
 		}
 	}

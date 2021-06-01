@@ -14,11 +14,18 @@
             {
                 "navigationBarTitleText": "购物车",
                 "enablePullDownRefresh": false
-				
-            }
-            
-        }
-        ,{
+            }  
+        },{
+            "path" : "pages/classify/classify",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "分类",
+                "enablePullDownRefresh": false,
+				"app-plus":{
+					"titleNView":false
+				}
+            }  
+        },{
             "path" : "pages/submit/submit",
             "style" :                                                                                    
             {
@@ -29,7 +36,6 @@
 				"app-plus":{
 					"titleNView":{
 						"titleSize":"20px"
-						
 					}
 				}
 				
