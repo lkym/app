@@ -12,9 +12,18 @@
 					</view>
 					<view class="search-logo" style="border-radius: 0 30px 30px 0;"></view>
 				</view>
-				<view class="top-more">
-					<view v-for="(item) in 3" :key="item"></view>
-				</view>
+				<van-popover
+				  v-model="showMenu"
+				  trigger="click"
+				  :actions="menuItem"
+				  @select="onSelect"
+				  class="top-more" 
+				  
+				>
+					<template #reference>
+						<view v-for="(item) in 3" :key="item"></view>
+					</template>
+				</van-popover>
 			</view>
 			<view class="main">
 				<scroll-view class="main-left" scroll-y="true">
@@ -40,6 +49,12 @@
 	export default {
 		data() {
 			return {
+				showMenu:false,
+				menuItem:[
+					{text:'首页',icon:'wap-home-o'},
+					{text:'购物车',icon:'cart-o'},
+				],
+				// menuValue:'',
 				searchMsg:'',
 				classify:[
 					{classifyName:"热门推荐"},
@@ -175,4 +190,5 @@
 		}
 	}
 }
+
 </style>
