@@ -70,7 +70,7 @@
 				<view class="trans-submit-way">
 					<view @tap="toggleWay" v-if="validateSubmit">账号密码登录</view>
 					<view @tap="toggleWay" v-else>短信验证码登录</view>
-					<view>手机快速注册</view>
+					<view @tap="goRegister">手机快速注册</view>
 				</view>
 			</view>
 			<view class="other-way">
@@ -118,6 +118,20 @@
 		methods: {
 			toggleWay(){
 				this.validateSubmit=!this.validateSubmit
+			},
+			goRegister(){
+				uni.navigateTo({
+					url:"../register/register",
+					success() {
+						
+					},
+					fail() {
+						
+					},
+					complete(){
+						
+					}
+				})
 			}
 		}
 	}

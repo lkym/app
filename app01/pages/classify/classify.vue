@@ -51,8 +51,8 @@
 			return {
 				showMenu:false,
 				menuItem:[
-					{text:'首页',icon:'wap-home-o'},
-					{text:'购物车',icon:'cart-o'},
+					{text:'首页',icon:'wap-home-o',value:'index'},
+					{text:'购物车',icon:'cart-o',value:'shopping'},
 				],
 				// menuValue:'',
 				searchMsg:'',
@@ -94,7 +94,19 @@
 				uni.reLaunch({
 					url:"/pages/index/index"
 				})
+			},
+			onSelect(action){
+				if(action.value == 'index'){
+					uni.reLaunch({
+						url:"/pages/index/index",
+					})
+				}else if(action.value == 'shopping'){
+					uni.reLaunch({
+						url:"/pages/shoppingCar/shoppingCar"
+					})
+				}
 			}
+			
 		}
 	}
 </script>
