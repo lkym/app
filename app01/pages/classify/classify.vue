@@ -3,7 +3,7 @@
 		<view class="container">
 			<view class="head">
 				<view class="backPre">
-					<i class="iconfont icon-xiangzuojiantou"></i>
+					<i class="iconfont icon-xiangzuojiantou" @tap="goBack"></i>
 				</view>
 				<view class="top-input">
 					<view class="search-logo"><i class="iconfont icon-sousuo"></i></view>
@@ -89,6 +89,11 @@
 			showShopping(classifyNum){
 				this.choosed=classifyNum
 				this.chooseItem=this.classify[classifyNum]
+			},
+			goBack(){
+				uni.reLaunch({
+					url:"/pages/index/index"
+				})
 			}
 		}
 	}

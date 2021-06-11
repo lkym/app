@@ -191,7 +191,13 @@
 	.submit-btn{
 		margin-top: 30px;
 		button{
+			width: 100%;
+			height: 50px;
 			border-radius: 50px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 16px;
 		}
 		button:first-child{
 			background-color: red;
