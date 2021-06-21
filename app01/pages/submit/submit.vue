@@ -116,6 +116,12 @@
 			}
 		},
 		methods: {
+			formSubmit(){
+				console.log("登录");
+			},
+			formReset(){
+				console.log("重置");
+			},
 			toggleWay(){
 				this.validateSubmit=!this.validateSubmit
 			},

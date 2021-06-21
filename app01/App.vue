@@ -21,12 +21,12 @@
 <style lang="scss">
 	/*每个页面公共css */
 	
-	@import 'vant/lib/index.css';
+	// @import 'vant/lib/index.css';
 	@import url("static/css/iconfont.css");
-	/deep/.van-popover{
-		left: 280px !important;
-	}
-	/deep/.van-popover .van-popover__arrow{
-		left: 90% !important;
-	}
+	// /deep/.van-popover{
+	// 	left: 280px !important;
+	// }
+	// /deep/.van-popover .van-popover__arrow{
+	// 	left: 90% !important;
+	// }
 </style>

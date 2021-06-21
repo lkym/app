@@ -56,7 +56,11 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": false,
+				"app-plus":{
+					"titleNView":false
+				}
+				
             }
             
         }
@@ -114,7 +118,7 @@
 				"text":"购物车"
 			},{
 				"iconPath":"static/personality.png",
-				"pagePath":"./pages/personality/personality",
+				"pagePath":"pages/personality/personality",
 				"text":"个人主页"
 				
 			}

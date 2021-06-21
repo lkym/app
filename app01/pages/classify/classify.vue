@@ -12,18 +12,9 @@
 					</view>
 					<view class="search-logo" style="border-radius: 0 30px 30px 0;"></view>
 				</view>
-				<van-popover
-				  v-model="showMenu"
-				  trigger="click"
-				  :actions="menuItem"
-				  @select="onSelect"
-				  class="top-more" 
-				  
-				>
-					<template #reference>
-						<view v-for="(item) in 3" :key="item"></view>
-					</template>
-				</van-popover>
+				
+				<view v-for="(item) in 3" :key="item"></view>
+			
 			</view>
 			<view class="main">
 				<scroll-view class="main-left" scroll-y="true">
