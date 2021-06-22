@@ -1,6 +1,5 @@
 <script>
 	// import {uniBadge} from '@dcloudio/uni-ui'
-
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')

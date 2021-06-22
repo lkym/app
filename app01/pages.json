@@ -87,6 +87,19 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus":{
+					"titleNView":false
+				}
+				
+            }
+            
+        }
+        ,{
+            "path" : "components/head/head",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
             
