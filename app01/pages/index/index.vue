@@ -2,7 +2,7 @@
 	<view class="content">
 		<top></top>
 		<scroll-view scroll-y="true" style="margin-top: 44px;">
-			<view class="">
+			<view style="background-image: url(../../static/bg.png);background-position: 0 -200px;;background-size: cover;background-repeat: no-repeat;">
 				<swiper :indicator-dots="true" 
 						:autoplay="true" 
 						:interval="3000" 
@@ -78,6 +78,9 @@
 			<!-- </scroll-view> -->
 			</view>
 		</scroll-view>
+		<view class="bussiness-pro">
+			<business v-for="(item) in 4"></business>
+		</view>
 	</view>
 </template>
 
@@ -151,6 +154,10 @@
 			this.minuteGap=new Date().getMinutes()
 			this.secondGap=new Date().getSeconds()
 			console.log(this.hourGap,this.minuteGap,this.secondGap);
+			
+			const db = uniCloud.database()
+			const collection = db.collection('business')
+			console.log(collection);
 		},
 		methods: {
 
@@ -160,7 +167,7 @@
 
 <style lang="scss" scoped>
 uni-page-body{
-	background-image: url(../../static/nav_back.jpg);
+	// background-image: url(../../static/nav_back.jpg);
 }
 uni-swiper-item{
 	display: flex;
@@ -196,6 +203,7 @@ uni-image{
 	}
 	.main-one{
 		.swiper-item{
+			width: 100%;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -302,5 +310,14 @@ uni-image{
 		}
 	}
 }
-
+.bussiness-pro{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 10px;
+	box-sizing: border-box;
+	background-color: #f6f6f6;
+}
 </style>

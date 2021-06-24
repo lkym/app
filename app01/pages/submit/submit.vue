@@ -5,7 +5,7 @@
 				<form @submit="formSubmit" @reset="formReset">
 					<view class="tel-box" v-if="validateSubmit">
 						<view class="title-input">
-							<span>+86</span> 
+							<text>+86</text> 
 							<i class="area_icon"></i>
 						</view>
 						<input type="text" name="telphone" 
@@ -29,7 +29,7 @@
 							<view v-show="showCancelTwo">&times;</view>
 						</view>
 						<view style="width: 30%;height: 25px;display: flex;justify-content: center;align-items: center;">
-							<span style="font-size: 14px;">获取验证码</span> 
+							<text style="font-size: 14px;">获取验证码</text> 
 						</view>	
 					</view>
 					<view class="email-box" v-if="!validateSubmit">
@@ -59,7 +59,7 @@
 							
 						</view>
 						<view style="width: 30%;height: 25px;text-align:center;display: flex;justify-content: center;align-items: center;">
-							<span style="font-size: 14px;">忘记密码</span> 
+							<text style="font-size: 14px;">忘记密码</text> 
 						</view>
 					</view>
 					<view class="submit-btn">

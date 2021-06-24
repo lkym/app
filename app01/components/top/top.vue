@@ -2,7 +2,7 @@
   <view>
 	 <view class="header">
 		 <view class="head-menu">
-		 	<image src="../../static/下载.png" mode=""></image>
+		 	<image src="../../static/menu.png" mode=""></image>
 		 </view>
 		 <view class="head-search">
 		 	<view class="head-search-logo"></view>
