@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view style="background-color: #f7f7f7;">
 		<view class="head">
 			<uni-nav-bar v-show="false">
 			    <view>
@@ -35,20 +35,46 @@
 		</view>
 		<view class="pic">
 			<swiper class="swiper" :indicator-dots="true">
-				<swiper-item>
+				<swiper-item v-for="(item) in 3">
 					<view class="swiper-item">
-						<image src="../../static/business.jpg" mode="aspectFit"></image>
+						<image src="../../static/business.jpg"></image>
 					</view>
 				</swiper-item>
-				<swiper-item>
-					<view class="swiper-item">B</view>
-				</swiper-item>
-				<swiper-item>
-					<view class="swiper-item">C</view>
-				</swiper-item>
 			</swiper>
+			<view class="pic-nav">
+				<scroll-view scroll-y="false" scroll-x="true" >
+					<view>
+						<image src="../../static/business.jpg"></image>
+						<image src="../../static/business.jpg"></image>
+						<image src="../../static/business.jpg"></image>
+					</view>
+				</scroll-view>
+			</view>
 		</view>
-		
+		<view class="business-info">
+			<view style="width: 100%;display: flex;justify-content: space-between;align-items: center;">
+				<view class="price">
+					<text style="color: red;font-size: 16px;">￥</text> 
+					<text style="color: red;font-size: 30px;">111</text></view>
+				<view class="warn-collect">
+					<view class="warn">
+						<i class="iconfont icon-jiangjiatongzhi" style="font-weight: 600;font-size: 22px;"></i>
+						<text>降价提醒</text>
+					</view>
+					<view class="warn">
+						<i class="iconfont icon-shoucang" style="font-weight: 600;font-size: 22px;"></i>
+						<text>降价提醒</text>
+					</view>
+				</view>
+			</view>
+			<view class="business-title">
+				<text>JEEP吉普 冰丝薄款休闲裤男夏季超薄宽松直筒抗皱免烫微弹力运动卫裤子男透气 Jp1118灰色 夏季薄款 L（适合130斤~140斤）</text>
+			</view>
+			<view class="business-memo">
+				<text>【6.25-27】：冬季清仓限时抄低价，领券满399减180元，低至219元！夏季新品已上线，超多重磅联名等你来撩~冬季清仓专区</text>
+				<text style="color: red;">查看></text>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -66,6 +92,9 @@
 </script>
 
 <style lang="scss" scoped>
+uni-page{
+	background-color: #f7f7f7 !important;
+}
 .head{
 	position: fixed;
 	top: 0;
@@ -137,8 +166,64 @@
 }
 .pic{
 	width: 100%;
+	.swiper{
+		height: 414px;
+	}
 	.swiper-item{
 		width: 100%;
+		uni-image{
+			width: 100%;
+			height: 414px;
+		}
+	}
+	.pic-nav{
+		width: 100%;
+		height: 60px;
+		background-color: #f7f7f7;
+		uni-scroll-view{
+			height: 60px;
+			uni-image{
+				width: 40px;
+				height: 40px;
+				margin: 0 10px;
+			}
+			/deep/.uni-scroll-view-content{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		}
+	}
+}
+.business-info{
+	width: 100%;
+	border-radius: 0 0 10px 10px;
+	background-color: white;
+	padding: 15px;
+	box-sizing: border-box;
+	.warn-collect{
+		display: flex;
+		.warn{
+			width: 36px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-size: 9px;
+			margin: 0 5px;
+			uni-text{
+				text-align: center;
+			}
+		}
+	}
+	.business-title{
+		font-weight: 700;
+		line-height: 21px;
+	}
+	.business-memo{
+		font-size: 12px;
+		margin-top: 15px;
+		color: #666;
 	}
 	
 }

@@ -28,4 +28,7 @@
 	// /deep/.van-popover .van-popover__arrow{
 	// 	left: 90% !important;
 	// }
+	uni-page-wrapper{
+		background-color: #f7f7f7;
+	}
 </style>
