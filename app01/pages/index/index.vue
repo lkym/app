@@ -155,9 +155,6 @@
 			this.secondGap=new Date().getSeconds()
 			console.log(this.hourGap,this.minuteGap,this.secondGap);
 			
-			// const db = uniCloud.database()
-			// const collection = db.collection('business')
-			// console.log(collection);
 		},
 		methods: {
 

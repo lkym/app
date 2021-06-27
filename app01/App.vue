@@ -29,6 +29,6 @@
 	// 	left: 90% !important;
 	// }
 	uni-page-wrapper{
-		background-color: #f7f7f7;
+		background-color: #eaeaea;
 	}
 </style>

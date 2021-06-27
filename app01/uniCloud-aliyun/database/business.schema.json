@@ -1,10 +1,10 @@
 // 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
 {
 	"bsonType": "object",
-	"required": ["businessName","businessPrice"],
+	"required": ["businessName", "businessPrice"],
 	"permission": {
 		"read": false,
-		"create": false,
+		"create": true,
 		"update": false,
 		"delete": false
 	},
@@ -12,15 +12,15 @@
 		"_id": {
 			"description": "ID，系统自动生成"
 		},
-		"businessName":{
-			"bsonType":"string",
-			"label":"商品名",
-			"description":"这是商品的名称"
+		"businessName": {
+			"bsonType": "string",
+			"label": "商品名",
+			"description": "这是商品的名称"
 		},
-		"businessPrice":{
-			"bsonType":"double",
-			"description":"这是商品价格",
-			"label":"商品价格"
+		"businessPrice": {
+			"bsonType": "double",
+			"description": "这是商品价格",
+			"label": "商品价格"
 		}
 	}
 }

@@ -12,11 +12,11 @@
 					<i class="iconfont icon-xiangzuojiantou"></i>
 				</view>
 			    <view slot="right" style="display: flex;justify-content: center;align-items: center;">
-					<view v-for="(item) in 3" style="width: 2px;height: 2px;border-radius: 2px;background-color: #000000;margin: 0 2px;"></view>
+					<view v-for="(item) in 3" :key="item" style="width: 2px;height: 2px;border-radius: 2px;background-color: #000000;margin: 0 2px;"></view>
 				</view>
 			</uni-nav-bar>
 			<view class="other-head">
-				<view class="other-left">
+				<view class="other-left" @tap="goBack">
 					<view class="other-left-back">
 						<i class="iconfont icon-xiangzuojiantou"></i>
 					</view>
@@ -27,7 +27,7 @@
 				</view> -->
 				<view class="other-right">
 					<view class="other-right-menu">
-						<view v-for="(item) in 3" style="width: 2px;height: 2px;border-radius: 2px;background-color: #ffffff;margin: 0 2px;"></view>
+						<view v-for="(item) in 3" :key="item" style="width: 2px;height: 2px;border-radius: 2px;background-color: #ffffff;margin: 0 2px;"></view>
 					</view>
 				</view>
 			</view>
@@ -35,18 +35,16 @@
 		</view>
 		<view class="pic">
 			<swiper class="swiper" :indicator-dots="true">
-				<swiper-item v-for="(item) in 3">
+				<swiper-item v-for="(item) in businesses" :key="item.id">
 					<view class="swiper-item">
-						<image src="../../static/business.jpg"></image>
+						<image :src="item.img"></image>
 					</view>
 				</swiper-item>
 			</swiper>
 			<view class="pic-nav">
 				<scroll-view scroll-y="false" scroll-x="true" >
-					<view>
-						<image src="../../static/business.jpg"></image>
-						<image src="../../static/business.jpg"></image>
-						<image src="../../static/business.jpg"></image>
+					<view v-for="(item) in businessNav" :key="item.id">
+						<image :src="item.img" @tap="changeBusiness(item)" :class="{'active':chooseNav == item.id}"></image>
 					</view>
 				</scroll-view>
 			</view>
@@ -75,6 +73,9 @@
 				<text style="color: red;">查看></text>
 			</view>
 		</view>
+		<!-- <view class="business-spec">
+			11
+		</view> -->
 	</view>
 </template>
 
@@ -82,11 +83,42 @@
 	export default {
 		data() {
 			return {
-				
+				businessNav:[],
+				businesses:[],
+				chooseNav:1,
 			}
 		},
-		methods: {
+		onShow(){
+			this.businessNav = [
+				{
+					"id":"1",
+					"img":"../../static/business.jpg",
+					"children":[
+							{"id":"1","img":"../../static/business.jpg"},
+							{"id":"2","img":"../../static/ku1_1.jpg"},
+							{"id":"3","img":"../../static/ku1_2.jpg"},
+							{"id":"4","img":"../../static/ku1_3.jpg"},
+							{"id":"5","img":"../../static/ku1_4.jpg"},
+							{"id":"6","img":"../../static/ku1_5.jpg"},
+					],
+				},
+				{"id":"2","img":"../../static/ku.jpg","children":[]},
+				{"id":"3","img":"../../static/ku2.jpg","children":[]},
+			]
+			this.businesses = this.businessNav[0].children
 			
+			
+		},
+		methods: {
+			goBack(){
+				uni.navigateBack({
+					delta:1
+				})
+			},
+			changeBusiness(item){
+				this.chooseNav = item.id
+				this.businesses = item.children
+			}
 		}
 	}
 </script>
@@ -186,6 +218,10 @@ uni-page{
 				width: 40px;
 				height: 40px;
 				margin: 0 10px;
+			}
+			.active{
+				border: 1px solid red;
+				box-sizing: border-box;
 			}
 			/deep/.uni-scroll-view-content{
 				display: flex;
