@@ -38,6 +38,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: #fff;
 	// padding: 20px;
 	.back-icon{
 		width: 5%;
