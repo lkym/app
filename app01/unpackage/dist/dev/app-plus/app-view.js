@@ -4105,7 +4105,12 @@ var render = function() {
                     }
                   ],
                   staticClass: _vm._$g(16, "sc"),
-                  attrs: { _i: 16 }
+                  attrs: { _i: 16 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
                 },
                 [_vm._v("×")]
               )
@@ -4261,9 +4266,172 @@ var render = function() {
                     disabled: _vm._$g(31, "a-disabled"),
                     "form-type": "submit",
                     _i: 31
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
                   }
                 },
                 [_c("v-uni-text", { attrs: { _i: 32 } }, [_vm._v("下一步")])],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _c(
+        "v-uni-view",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm._$g(33, "v-show"),
+              expression: "_$g(33,'v-show')"
+            }
+          ],
+          staticClass: _vm._$g(33, "sc"),
+          attrs: { _i: 33 }
+        },
+        [
+          _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(34, "sc"), attrs: { _i: 34 } },
+            [
+              _c("v-uni-image", {
+                attrs: { src: _vm._$g(35, "a-src"), mode: "", _i: 35 }
+              })
+            ],
+            1
+          ),
+          _c("v-uni-text", { attrs: { _i: 36 } }, [_vm._v("请设置登录密码")]),
+          _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(37, "sc"), attrs: { _i: 37 } },
+            [
+              _c("v-uni-input", {
+                staticStyle: { width: "80%" },
+                attrs: {
+                  password: true,
+                  placeholder: "请设置8-20位登录密码",
+                  _i: 38
+                },
+                on: {
+                  focus: function($event) {
+                    return _vm.$handleViewEvent($event)
+                  },
+                  blur: function($event) {
+                    return _vm.$handleViewEvent($event)
+                  }
+                },
+                model: {
+                  value: _vm._$g(38, "v-model"),
+                  callback: function($$v) {
+                    _vm.$handleVModelEvent(38, $$v)
+                  },
+                  expression: "password"
+                }
+              }),
+              _c(
+                "v-uni-view",
+                { staticClass: _vm._$g(39, "sc"), attrs: { _i: 39 } },
+                [
+                  _c(
+                    "v-uni-text",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm._$g(40, "v-show"),
+                          expression: "_$g(40,'v-show')"
+                        }
+                      ],
+                      attrs: { _i: 40 },
+                      on: {
+                        click: function($event) {
+                          return _vm.$handleViewEvent($event)
+                        }
+                      }
+                    },
+                    [_vm._v("×")]
+                  )
+                ],
+                1
+              ),
+              _c(
+                "v-uni-view",
+                {
+                  staticClass: _vm._$g(41, "sc"),
+                  staticStyle: {
+                    width: "10%",
+                    background: "none",
+                    display: "flex",
+                    "justify-content": "center",
+                    "align-items": "center"
+                  },
+                  attrs: { _i: 41 }
+                },
+                [
+                  _vm._$g(42, "i")
+                    ? _c("v-uni-image", {
+                        staticStyle: { width: "25px", height: "25px" },
+                        attrs: { src: _vm._$g(42, "a-src"), mode: "", _i: 42 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                    : _c("v-uni-image", {
+                        staticStyle: { width: "25px", height: "25px" },
+                        attrs: { src: _vm._$g(43, "a-src"), mode: "", _i: 43 },
+                        on: {
+                          click: function($event) {
+                            return _vm.$handleViewEvent($event)
+                          }
+                        }
+                      })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _c(
+            "v-uni-view",
+            {
+              staticStyle: { "font-size": "14px", color: "#d0d0d0" },
+              attrs: { _i: 44 }
+            },
+            [
+              _c("v-uni-text", { attrs: { _i: 45 } }, [
+                _vm._v(
+                  "密码由8-20位字母，数字或半角符号组成，不能是10位以下纯数字/字母/半角符号，字母区分大小写"
+                )
+              ])
+            ],
+            1
+          ),
+          _c(
+            "v-uni-view",
+            { staticClass: _vm._$g(46, "sc"), attrs: { _i: 46 } },
+            [
+              _c(
+                "v-uni-button",
+                {
+                  class: _vm._$g(47, "c"),
+                  attrs: {
+                    type: "default",
+                    disabled: _vm._$g(47, "a-disabled"),
+                    "form-type": "submit",
+                    _i: 47
+                  }
+                },
+                [_c("v-uni-text", { attrs: { _i: 48 } }, [_vm._v("下一步")])],
                 1
               )
             ],

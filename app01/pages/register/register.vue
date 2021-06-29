@@ -31,7 +31,7 @@
 					   @focus="showCancel=true"
 					   @blur="showCancel=false"
 					   />
-				<view class="cancel-input" v-show="showCancel">&times;</view>
+				<view class="cancel-input" v-show="showCancel" @tap="registerPhone=''">&times;</view>
 			</view>
 		</view>
 		<view class="submit-btn" v-show="showRegisterInput">
@@ -45,7 +45,7 @@
 				<text>下一步</text>
 			</button>
 		</view>
-		<view class="register-validate" v-show="!showRegisterInput">
+		<view class="register-validate" v-show="showValidate">
 			<view class="register-wait">
 				<image src="../../static/wait.png" mode=""></image>
 			</view>
@@ -64,14 +64,51 @@
 			<view class="submit-btn">
 				<button 
 					type="default" 
-					:disabled="disabled" 
+					:disabled="validate==''" 
 					form-type="submit" 
 					:class="{'active':validate!=''}"
+					@tap="toSetPwd"
 					>
 					<text>下一步</text>
 				</button>
 			</view>
 		</view>
+		<view class="register-validate" v-show="showPwd">
+			<view class="register-wait">
+				<image src="../../static/wait.png" mode=""></image>
+			</view>
+			<text>请设置登录密码</text>
+			<view class="validate-input" >
+				<input 
+					:password="true"
+					v-model="password" 
+					placeholder="请设置8-20位登录密码" 
+					@focus="showCancel=true"
+					@blur="showCancel=false"
+					style="width: 80%;"
+					/>
+					
+				<view class="cancel-input"><text v-show="showCancel" @tap="password=''">&times;</text></view>
+				<view class="getValidate" style="width:10%;background: none;display: flex;justify-content: center;align-items: center;">
+					<image style="width: 25px;height: 25px;" src="../../static/open_eye.png" mode="" v-if="eyeStatus" @tap="eyeStatus=!eyeStatus"></image>
+					<image style="width: 25px;height: 25px;" src="../../static/close_eye.png" mode="" v-else  @tap="eyeStatus=!eyeStatus"></image>
+				</view>
+			</view>
+			<view style="font-size: 14px;color: #d0d0d0;">
+				<text>密码由8-20位字母，数字或半角符号组成，不能是10位以下纯数字/字母/半角符号，字母区分大小写</text>
+			</view>
+			<view class="submit-btn">
+				<button 
+					type="default" 
+					:disabled="password==''" 
+					form-type="submit" 
+					:class="{'active':password!=''}"
+					>
+					<text>下一步</text>
+				</button>
+			</view>
+		</view>
+		
 	</view>
 </template>
 
@@ -86,8 +123,12 @@
 				disabled:true,
 				active:false,
 				showRegisterInput:true,
+				showValidate:false,
 				showCancel:false,
-				validate:''
+				validate:'',    //  验证码
+				showPwd:false,
+				password:'',   //  密码
+				eyeStatus:false
 				
 			}
 		},
@@ -109,10 +150,14 @@
 			},
 			toSendValidate(){
 				this.showRegisterInput = false
-				
+				this.showValidate = true
 			},
 			clearInput(){
 				this.validate = ''
+			},
+			toSetPwd(){
+				this.showValidate = false
+				this.showPwd = true
 			}
 		},
 		watch:{
