@@ -3005,6 +3005,13 @@ var render = function() {
                               blur: function($event) {
                                 return _vm.$handleViewEvent($event)
                               }
+                            },
+                            model: {
+                              value: _vm._$g(8, "v-model"),
+                              callback: function($$v) {
+                                _vm.$handleVModelEvent(8, $$v)
+                              },
+                              expression: "submitPhone"
                             }
                           }),
                           _c(
@@ -3019,7 +3026,12 @@ var render = function() {
                                 }
                               ],
                               staticClass: _vm._$g(9, "sc"),
-                              attrs: { _i: 9 }
+                              attrs: { _i: 9 },
+                              on: {
+                                click: function($event) {
+                                  return _vm.$handleViewEvent($event)
+                                }
+                              }
                             },
                             [_vm._v("×")]
                           )
@@ -3049,6 +3061,13 @@ var render = function() {
                               blur: function($event) {
                                 return _vm.$handleViewEvent($event)
                               }
+                            },
+                            model: {
+                              value: _vm._$g(11, "v-model"),
+                              callback: function($$v) {
+                                _vm.$handleVModelEvent(11, $$v)
+                              },
+                              expression: "validate"
                             }
                           }),
                           _c(
@@ -3078,7 +3097,12 @@ var render = function() {
                                       expression: "_$g(13,'v-show')"
                                     }
                                   ],
-                                  attrs: { _i: 13 }
+                                  attrs: { _i: 13 },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.$handleViewEvent($event)
+                                    }
+                                  }
                                 },
                                 [_vm._v("×")]
                               )
@@ -3134,6 +3158,13 @@ var render = function() {
                               blur: function($event) {
                                 return _vm.$handleViewEvent($event)
                               }
+                            },
+                            model: {
+                              value: _vm._$g(17, "v-model"),
+                              callback: function($$v) {
+                                _vm.$handleVModelEvent(17, $$v)
+                              },
+                              expression: "name"
                             }
                           }),
                           _c(
@@ -3159,7 +3190,12 @@ var render = function() {
                                       expression: "_$g(19,'v-show')"
                                     }
                                   ],
-                                  attrs: { _i: 19 }
+                                  attrs: { _i: 19 },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.$handleViewEvent($event)
+                                    }
+                                  }
                                 },
                                 [_vm._v("×")]
                               )
@@ -3179,7 +3215,7 @@ var render = function() {
                             staticClass: _vm._$g(21, "sc"),
                             staticStyle: { width: "50%" },
                             attrs: {
-                              type: "text",
+                              type: _vm._$g(21, "a-type"),
                               name: "telphone",
                               placeholder: "请输入密码",
                               _i: 21
@@ -3191,6 +3227,13 @@ var render = function() {
                               blur: function($event) {
                                 return _vm.$handleViewEvent($event)
                               }
+                            },
+                            model: {
+                              value: _vm._$g(21, "v-model"),
+                              callback: function($$v) {
+                                _vm.$handleVModelEvent(21, $$v)
+                              },
+                              expression: "pwd"
                             }
                           }),
                           _c(
@@ -3229,7 +3272,12 @@ var render = function() {
                                           expression: "_$g(24,'v-show')"
                                         }
                                       ],
-                                      attrs: { _i: 24 }
+                                      attrs: { _i: 24 },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.$handleViewEvent($event)
+                                        }
+                                      }
                                     },
                                     [_vm._v("×")]
                                   )
@@ -4242,11 +4290,24 @@ var render = function() {
               ),
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(28, "sc"), attrs: { _i: 28 } },
+                {
+                  staticClass: _vm._$g(28, "sc"),
+                  class: _vm._$g(28, "c"),
+                  attrs: { _i: 28 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
                 [
-                  _c("v-uni-text", { attrs: { _i: 29 } }, [
-                    _vm._v("获取验证码")
-                  ])
+                  _vm._$g(29, "i")
+                    ? _c("v-uni-text", { attrs: { _i: 29 } }, [
+                        _vm._v("获取验证码")
+                      ])
+                    : _c("v-uni-text", { attrs: { _i: 30 } }, [
+                        _vm._v("重新发送(" + _vm._$g(30, "t0-0") + ")")
+                      ])
                 ],
                 1
               )
@@ -4255,17 +4316,17 @@ var render = function() {
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(30, "sc"), attrs: { _i: 30 } },
+            { staticClass: _vm._$g(31, "sc"), attrs: { _i: 31 } },
             [
               _c(
                 "v-uni-button",
                 {
-                  class: _vm._$g(31, "c"),
+                  class: _vm._$g(32, "c"),
                   attrs: {
                     type: "default",
-                    disabled: _vm._$g(31, "a-disabled"),
+                    disabled: _vm._$g(32, "a-disabled"),
                     "form-type": "submit",
-                    _i: 31
+                    _i: 32
                   },
                   on: {
                     click: function($event) {
@@ -4273,7 +4334,7 @@ var render = function() {
                     }
                   }
                 },
-                [_c("v-uni-text", { attrs: { _i: 32 } }, [_vm._v("下一步")])],
+                [_c("v-uni-text", { attrs: { _i: 33 } }, [_vm._v("下一步")])],
                 1
               )
             ],
@@ -4289,35 +4350,35 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: _vm._$g(33, "v-show"),
-              expression: "_$g(33,'v-show')"
+              value: _vm._$g(34, "v-show"),
+              expression: "_$g(34,'v-show')"
             }
           ],
-          staticClass: _vm._$g(33, "sc"),
-          attrs: { _i: 33 }
+          staticClass: _vm._$g(34, "sc"),
+          attrs: { _i: 34 }
         },
         [
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(34, "sc"), attrs: { _i: 34 } },
+            { staticClass: _vm._$g(35, "sc"), attrs: { _i: 35 } },
             [
               _c("v-uni-image", {
-                attrs: { src: _vm._$g(35, "a-src"), mode: "", _i: 35 }
+                attrs: { src: _vm._$g(36, "a-src"), mode: "", _i: 36 }
               })
             ],
             1
           ),
-          _c("v-uni-text", { attrs: { _i: 36 } }, [_vm._v("请设置登录密码")]),
+          _c("v-uni-text", { attrs: { _i: 37 } }, [_vm._v("请设置登录密码")]),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(37, "sc"), attrs: { _i: 37 } },
+            { staticClass: _vm._$g(38, "sc"), attrs: { _i: 38 } },
             [
               _c("v-uni-input", {
                 staticStyle: { width: "80%" },
                 attrs: {
                   password: true,
                   placeholder: "请设置8-20位登录密码",
-                  _i: 38
+                  _i: 39
                 },
                 on: {
                   focus: function($event) {
@@ -4328,16 +4389,16 @@ var render = function() {
                   }
                 },
                 model: {
-                  value: _vm._$g(38, "v-model"),
+                  value: _vm._$g(39, "v-model"),
                   callback: function($$v) {
-                    _vm.$handleVModelEvent(38, $$v)
+                    _vm.$handleVModelEvent(39, $$v)
                   },
                   expression: "password"
                 }
               }),
               _c(
                 "v-uni-view",
-                { staticClass: _vm._$g(39, "sc"), attrs: { _i: 39 } },
+                { staticClass: _vm._$g(40, "sc"), attrs: { _i: 40 } },
                 [
                   _c(
                     "v-uni-text",
@@ -4346,11 +4407,11 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm._$g(40, "v-show"),
-                          expression: "_$g(40,'v-show')"
+                          value: _vm._$g(41, "v-show"),
+                          expression: "_$g(41,'v-show')"
                         }
                       ],
-                      attrs: { _i: 40 },
+                      attrs: { _i: 41 },
                       on: {
                         click: function($event) {
                           return _vm.$handleViewEvent($event)
@@ -4365,7 +4426,7 @@ var render = function() {
               _c(
                 "v-uni-view",
                 {
-                  staticClass: _vm._$g(41, "sc"),
+                  staticClass: _vm._$g(42, "sc"),
                   staticStyle: {
                     width: "10%",
                     background: "none",
@@ -4373,13 +4434,13 @@ var render = function() {
                     "justify-content": "center",
                     "align-items": "center"
                   },
-                  attrs: { _i: 41 }
+                  attrs: { _i: 42 }
                 },
                 [
-                  _vm._$g(42, "i")
+                  _vm._$g(43, "i")
                     ? _c("v-uni-image", {
                         staticStyle: { width: "25px", height: "25px" },
-                        attrs: { src: _vm._$g(42, "a-src"), mode: "", _i: 42 },
+                        attrs: { src: _vm._$g(43, "a-src"), mode: "", _i: 43 },
                         on: {
                           click: function($event) {
                             return _vm.$handleViewEvent($event)
@@ -4388,7 +4449,7 @@ var render = function() {
                       })
                     : _c("v-uni-image", {
                         staticStyle: { width: "25px", height: "25px" },
-                        attrs: { src: _vm._$g(43, "a-src"), mode: "", _i: 43 },
+                        attrs: { src: _vm._$g(44, "a-src"), mode: "", _i: 44 },
                         on: {
                           click: function($event) {
                             return _vm.$handleViewEvent($event)
@@ -4405,10 +4466,10 @@ var render = function() {
             "v-uni-view",
             {
               staticStyle: { "font-size": "14px", color: "#d0d0d0" },
-              attrs: { _i: 44 }
+              attrs: { _i: 45 }
             },
             [
-              _c("v-uni-text", { attrs: { _i: 45 } }, [
+              _c("v-uni-text", { attrs: { _i: 46 } }, [
                 _vm._v(
                   "密码由8-20位字母，数字或半角符号组成，不能是10位以下纯数字/字母/半角符号，字母区分大小写"
                 )
@@ -4418,20 +4479,25 @@ var render = function() {
           ),
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(46, "sc"), attrs: { _i: 46 } },
+            { staticClass: _vm._$g(47, "sc"), attrs: { _i: 47 } },
             [
               _c(
                 "v-uni-button",
                 {
-                  class: _vm._$g(47, "c"),
+                  class: _vm._$g(48, "c"),
                   attrs: {
                     type: "default",
-                    disabled: _vm._$g(47, "a-disabled"),
+                    disabled: _vm._$g(48, "a-disabled"),
                     "form-type": "submit",
-                    _i: 47
+                    _i: 48
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
                   }
                 },
-                [_c("v-uni-text", { attrs: { _i: 48 } }, [_vm._v("下一步")])],
+                [_c("v-uni-text", { attrs: { _i: 49 } }, [_vm._v("下一步")])],
                 1
               )
             ],
@@ -5157,7 +5223,7 @@ var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../../static/dropdow
 exports = ___CSS_LOADER_API_IMPORT___(false);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\nuni-page-body[data-v-6f6d9236], uni-page-refresh[data-v-6f6d9236] {\r\n  height: 100%;\n}\n[data-v-6f6d9236] .uni-popup {\r\n  width: 100%;\r\n  height: 100%;\n}\n[data-v-6f6d9236] .uni-popup uni-view {\r\n  width: 100%;\r\n  height: 100%;\n}\n[data-v-6f6d9236] .uni-popup uni-view .uni-popup__wrapper {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text {\r\n  width: 350px;\r\n  height: 380px;\r\n  background-color: #fff;\r\n  margin: 0 auto;\r\n  border-radius: 10px;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text .protocol-text-head {\r\n  width: 100%;\r\n  height: 50px;\r\n  font-weight: 100;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text .protocol-content {\r\n  width: 100%;\r\n  height: 180px;\r\n  font-size: 14px;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text .protocol-add {\r\n  width: 100%;\r\n  height: 100px;\r\n  border-radius: 10px 10px 0 0;\r\n  box-shadow: 3px 0  3px #999491;\r\n  font-size: 13px;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text .protocol-foot {\r\n  width: 100%;\r\n  height: 50px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text .protocol-foot .sure {\r\n  width: 50%;\r\n  height: 50px;\r\n  line-height: 50px;\r\n  text-align: center;\r\n  font-size: 15px;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text .protocol-foot .sure:last-child {\r\n  background-color: red;\r\n  color: white;\n}\n.tel-box[data-v-6f6d9236] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: start;\r\n  -webkit-justify-content: flex-start;\r\n          justify-content: flex-start;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  padding-bottom: 10px;\r\n  border-bottom: 1px solid #dedede;\r\n  margin-top: 20px;\r\n  position: relative;\n}\n.tel-box .title-input[data-v-6f6d9236] {\r\n  width: 20%;\r\n  line-height: 25px;\n}\n.tel-box .title-input .area_icon[data-v-6f6d9236] {\r\n  width: 15px;\r\n  height: 15px;\r\n  position: absolute;\r\n  top: 10px;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n  background-repeat: no-repeat;\r\n  background-size: 100% auto;\r\n  display: inline-block;\r\n  margin-left: 10px;\n}\n.tel-box .tel-input[data-v-6f6d9236] {\r\n  width: 75%;\r\n  height: auto;\n}\n.tel-box .cancel-input[data-v-6f6d9236] {\r\n  width: 5%;\r\n  height: 25px;\r\n  line-height: 25px;\r\n  font-size: 25px;\r\n  color: #C0C0C0;\n}\n.submit-btn[data-v-6f6d9236] {\r\n  width: 100%;\r\n  height: 50px;\r\n  margin-top: 30px;\r\n  padding: 0 25px;\r\n  box-sizing: border-box;\n}\n.submit-btn uni-button[data-v-6f6d9236] {\r\n  width: 100%;\r\n  height: 50px;\r\n  border-radius: 50px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  font-size: 16px;\n}\n.submit-btn uni-button[data-v-6f6d9236]:first-child {\r\n  background-color: #f87072;\r\n  color: white;\r\n  margin-bottom: 15px;\r\n  letter-spacing: 5px;\n}\n.submit-btn[data-v-6f6d9236] .active {\r\n  background-color: red !important;\n}\n.register-validate[data-v-6f6d9236] {\r\n  width: 100%;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  padding: 20px;\r\n  box-sizing: border-box;\r\n  font-size: 16px;\n}\n.register-validate .register-wait[data-v-6f6d9236] {\r\n  width: 100%;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  margin-bottom: 20px;\n}\n.register-validate .register-wait uni-image[data-v-6f6d9236] {\r\n  width: 88px;\r\n  height: 71px;\n}\n.register-validate .validate-input[data-v-6f6d9236] {\r\n  width: 100%;\r\n  height: 50px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: start;\r\n  -webkit-justify-content: flex-start;\r\n          justify-content: flex-start;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  border-bottom: 1px solid #d0d0d0;\r\n  margin-top: 20px;\n}\n.register-validate .validate-input uni-input[data-v-6f6d9236] {\r\n  width: 60%;\r\n  font-size: 16px;\r\n  line-height: 16px;\n}\n.register-validate .validate-input .cancel-input[data-v-6f6d9236] {\r\n  width: 10%;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  font-size: 25px;\r\n  color: #C0C0C0;\n}\n.register-validate .validate-input .cancel-input uni-text[data-v-6f6d9236] {\r\n  padding: 0;\n}\n.register-validate .validate-input .getValidate[data-v-6f6d9236] {\r\n  width: 30%;\r\n  border-radius: 50px;\r\n  background-color: rgba(226, 35, 30, 0.2);\r\n  line-height: 34px;\r\n  text-align: center;\r\n  color: red;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\nuni-page-body[data-v-6f6d9236], uni-page-refresh[data-v-6f6d9236] {\r\n  height: 100%;\n}\n[data-v-6f6d9236] .uni-popup {\r\n  width: 100%;\r\n  height: 100%;\n}\n[data-v-6f6d9236] .uni-popup uni-view {\r\n  width: 100%;\r\n  height: 100%;\n}\n[data-v-6f6d9236] .uni-popup uni-view .uni-popup__wrapper {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text {\r\n  width: 350px;\r\n  height: 380px;\r\n  background-color: #fff;\r\n  margin: 0 auto;\r\n  border-radius: 10px;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text .protocol-text-head {\r\n  width: 100%;\r\n  height: 50px;\r\n  font-weight: 100;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text .protocol-content {\r\n  width: 100%;\r\n  height: 180px;\r\n  font-size: 14px;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text .protocol-add {\r\n  width: 100%;\r\n  height: 100px;\r\n  border-radius: 10px 10px 0 0;\r\n  box-shadow: 3px 0  3px #999491;\r\n  font-size: 13px;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text .protocol-foot {\r\n  width: 100%;\r\n  height: 50px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text .protocol-foot .sure {\r\n  width: 50%;\r\n  height: 50px;\r\n  line-height: 50px;\r\n  text-align: center;\r\n  font-size: 15px;\n}\n[data-v-6f6d9236] .uni-popup .protocol-text .protocol-foot .sure:last-child {\r\n  background-color: red;\r\n  color: white;\n}\n.tel-box[data-v-6f6d9236] {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: start;\r\n  -webkit-justify-content: flex-start;\r\n          justify-content: flex-start;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  padding-bottom: 10px;\r\n  border-bottom: 1px solid #dedede;\r\n  margin-top: 20px;\r\n  position: relative;\n}\n.tel-box .title-input[data-v-6f6d9236] {\r\n  width: 20%;\r\n  line-height: 25px;\n}\n.tel-box .title-input .area_icon[data-v-6f6d9236] {\r\n  width: 15px;\r\n  height: 15px;\r\n  position: absolute;\r\n  top: 10px;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n  background-repeat: no-repeat;\r\n  background-size: 100% auto;\r\n  display: inline-block;\r\n  margin-left: 10px;\n}\n.tel-box .tel-input[data-v-6f6d9236] {\r\n  width: 75%;\r\n  height: auto;\n}\n.tel-box .cancel-input[data-v-6f6d9236] {\r\n  width: 5%;\r\n  height: 25px;\r\n  line-height: 25px;\r\n  font-size: 25px;\r\n  color: #C0C0C0;\n}\n.submit-btn[data-v-6f6d9236] {\r\n  width: 100%;\r\n  height: 50px;\r\n  margin-top: 30px;\r\n  padding: 0 25px;\r\n  box-sizing: border-box;\n}\n.submit-btn uni-button[data-v-6f6d9236] {\r\n  width: 100%;\r\n  height: 50px;\r\n  border-radius: 50px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  font-size: 16px;\n}\n.submit-btn uni-button[data-v-6f6d9236]:first-child {\r\n  background-color: #f87072;\r\n  color: white;\r\n  margin-bottom: 15px;\r\n  letter-spacing: 5px;\n}\n.submit-btn[data-v-6f6d9236] .active {\r\n  background-color: red !important;\n}\n.register-validate[data-v-6f6d9236] {\r\n  width: 100%;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  padding: 20px;\r\n  box-sizing: border-box;\r\n  font-size: 16px;\n}\n.register-validate .register-wait[data-v-6f6d9236] {\r\n  width: 100%;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  margin-bottom: 20px;\n}\n.register-validate .register-wait uni-image[data-v-6f6d9236] {\r\n  width: 88px;\r\n  height: 71px;\n}\n.register-validate .validate-input[data-v-6f6d9236] {\r\n  width: 100%;\r\n  height: 50px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: start;\r\n  -webkit-justify-content: flex-start;\r\n          justify-content: flex-start;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  border-bottom: 1px solid #d0d0d0;\r\n  margin-top: 20px;\n}\n.register-validate .validate-input uni-input[data-v-6f6d9236] {\r\n  width: 60%;\r\n  font-size: 16px;\r\n  line-height: 16px;\n}\n.register-validate .validate-input .cancel-input[data-v-6f6d9236] {\r\n  width: 10%;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  font-size: 25px;\r\n  color: #C0C0C0;\n}\n.register-validate .validate-input .cancel-input uni-text[data-v-6f6d9236] {\r\n  padding: 0;\n}\n.register-validate .validate-input .getValidate[data-v-6f6d9236] {\r\n  width: 30%;\r\n  border-radius: 50px;\r\n  background-color: rgba(226, 35, 30, 0.2);\r\n  line-height: 34px;\r\n  text-align: center;\r\n  color: red;\n}\n.register-validate .validate-input .timer[data-v-6f6d9236] {\r\n  background-color: rgba(189, 186, 185, 0.2);\r\n  color: #b0b0b0;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

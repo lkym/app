@@ -59,7 +59,10 @@
 					@blur="showCancel=false"
 					/>
 				<view class="cancel-input"><text v-show="showCancel" @tap="clearInput">&times;</text></view>
-				<view class="getValidate"><text>获取验证码</text></view>
+				<view class="getValidate" :class="{'timer':timer<60}" @tap="toSendValidate">
+					<text v-if="timer==60">获取验证码</text>
+					<text v-else>重新发送({{timer}})</text>
+				</view>
 			</view>
 			<view class="submit-btn">
 				<button 
@@ -103,6 +106,7 @@
 					:disabled="password==''" 
 					form-type="submit" 
 					:class="{'active':password!=''}"
+					@tap="userRegister"
 					>
 					<text>下一步</text>
 				</button>
@@ -128,7 +132,8 @@
 				validate:'',    //  验证码
 				showPwd:false,
 				password:'',   //  密码
-				eyeStatus:false
+				eyeStatus:false,
+				timer:60
 				
 			}
 		},
@@ -151,6 +156,16 @@
 			toSendValidate(){
 				this.showRegisterInput = false
 				this.showValidate = true
+				if(this.timer == 60){
+					const timer = setInterval(()=>{
+						this.timer = this.timer-1
+						if(this.timer == 0){
+							this.timer = 60
+							clearInterval(timer)
+						}
+					},1000)
+				}
+				
 			},
 			clearInput(){
 				this.validate = ''
@@ -158,6 +173,47 @@
 			toSetPwd(){
 				this.showValidate = false
 				this.showPwd = true
+			},
+			userRegister(){
+				if(/[A-Za-z0-9]{8,20}/.test(this.password)){
+					const db = uniCloud.database()  // 获取数据库
+					const user = db.collection('user')  // 创建user表对象
+					user.add({
+						phone:this.registerPhone,
+						password:this.password,
+					}).then((res)=>{
+						// console.log(res);
+						user.where({_id:res.result.id})
+						.update({
+							username:res.result.id
+						}),
+						uni.setStorage({
+							key:"username",
+							data:res.result.id,
+							success() {
+								uni.switchTab({
+									url:"../personality/personality",
+									success() {
+										uni.showToast({
+											title:"注册成功!!"
+										})
+									},
+									fail() {
+										
+									}
+								})
+							}
+						})
+					}).catch((err)=>{
+						console.log(err);
+					})
+					
+				}else{
+					uni.showToast({
+						title:"密码必须是8-20位的数字，字母，下划线"
+					})
+				}
+				
 			}
 		},
 		watch:{
@@ -350,6 +406,10 @@ uni-page-body, uni-page-refresh{
 			text-align: center;
 			color: red;
 			
+		}
+		.timer{
+			background-color: rgba(189, 186, 185, 0.2);
+			color: #b0b0b0;
 		}
 		
 	}

@@ -1,31 +1,40 @@
 {
 	"bsonType": "object",
-	"required": ["phone","email","username","password"],
+	"required": ["phone", "password"],
 	"permission": {
 		"read": true,
 		"create": true,
-		"update": false,
-		"delete": false
+		"update": true,
+		"delete": true,
+		"count": true
 	},
 	"properties": {
 		"_id": {
 			"description": "ID，系统自动生成"
 		},
-		"phone":{
-			"description":"手机号码，必有",
-			"bsonType":"string"
+		"phone": {
+			"description": "手机号码，必有",
+			"bsonType": "string",
+			"permission": {
+				"write": true,
+				"read": true
+			}
 		},
-		"email":{
-			"description":"手机邮箱",
-			"bsonType":"string"
+		"email": {
+			"description": "手机邮箱",
+			"bsonType": "string"
 		},
-		"username":{
-			"description":"用户名",
-			"bsonType":"string"
+		"username": {
+			"description": "用户名",
+			"bsonType": "string"
 		},
-		"password":{
-			"description":"用户密码",
-			"bsonType":"password"
+		"password": {
+			"description": "用户密码",
+			"bsonType": "string",
+			"permission": {
+				"write": true,
+				"read": false
+			}
 		}
 	}
 }

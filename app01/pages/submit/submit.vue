@@ -10,23 +10,29 @@
 						</view>
 						<input type="text" name="telphone" 
 							   placeholder="请输入手机号" 
-							   class="tel-input" @focus="showCancel=true"
+							   v-model="submitPhone"
+							   class="tel-input" 
+							   @focus="showCancel=true"
 							   @blur="showCancel=false"/>
-						<view class="cancel-input" v-show="showCancel">&times;</view>
+						<view class="cancel-input" v-show="showCancel" @tap="submitPhone=''">
+							&times;
+						</view>
 					</view>
 					<view class="tel-box" v-if="validateSubmit">
 						<input type="text" name="telphone"
 							   placeholder="请输入收到的验证码" 
+							   v-model="validate"
 							   width="75"
 							   style="width: 65%;"
-							   class="tel-input" @focus="showCancelTwo=true"
+							   class="tel-input" 
+							   @focus="showCancelTwo=true"
 							   @blur="showCancelTwo=false"/>
 						<view  class="cancel-input"  
 							   style="border-right: 1px solid #dedede;
 									  display: flex;justify-content: center;
 									  align-items: center;padding-right: 15px;
 									  margin-right: 15px;box-sizing: border-box;">
-							<view v-show="showCancelTwo">&times;</view>
+							<view v-show="showCancelTwo" @tap="validate=''">&times;</view>
 						</view>
 						<view style="width: 30%;height: 25px;display: flex;justify-content: center;align-items: center;">
 							<text style="font-size: 14px;">获取验证码</text> 
@@ -35,27 +41,33 @@
 					<view class="email-box" v-if="!validateSubmit">
 						<input type="text" name="telphone"
 							   placeholder="用户名/邮箱/手机号" 
+							   v-model="name"
 							   style="width: 95%;"
-							   class="tel-input" @focus="showCancel=true"
+							   class="tel-input" 
+							   @focus="showCancel=true"
 							   @blur="showCancel=false"/>
 						<view  class="cancel-input"  
 							   style="display: flex;justify-content: center;
 									  align-items: center;">
-							<view v-show="showCancel">&times;</view>
+							<view v-show="showCancel" @tap="name=''">&times;</view>
 						</view>
 					</view>
 					<view class="email-box" v-if="!validateSubmit">
-						<input type="text" name="telphone"
+						<input 
+							   :type="pwdType"  
+							   name="telphone"
 							   placeholder="请输入密码" 
+							   v-model="pwd"
 							   style="width: 50%;"
-							   class="tel-input" @focus="showCancelTwo=true"
+							   class="tel-input" 
+							   @focus="showCancelTwo=true"
 							   @blur="showCancelTwo=false"/>
 						<view  class="cancel-input"  
 							   style="display: flex;justify-content: center;border-right: 1px solid #dedede;
 									  align-items: center;padding-right: 15px;box-sizing: border-box;">
-							<view style="width: 25px;height: 25px;" ><text v-show="showCancelTwo">&times;</text></view>
-							<image src="../../static/open_eye.png" mode="" v-if="showPwd" @tap="showPwd=!showPwd"></image>
-							<image src="../../static/close_eye.png" mode="" v-else  @tap="showPwd=!showPwd"></image>
+							<view style="width: 25px;height: 25px;" ><text v-show="showCancelTwo" @tap="pwd=''">&times;</text></view>
+							<image src="../../static/open_eye.png" mode="" v-if="showPwd" @tap="lookPwd('password')"></image>
+							<image src="../../static/close_eye.png" mode="" v-else  @tap="lookPwd('text')"></image>
 							
 						</view>
 						<view style="width: 30%;height: 25px;text-align:center;display: flex;justify-content: center;align-items: center;">
@@ -112,7 +124,12 @@
 				showCancel:false,
 				showCancelTwo:false,
 				validateSubmit:true,
-				showPwd:false
+				showPwd:false,
+				submitPhone:'',    //   登陆的输入的手机号
+				validate:'',       //   验证码
+				name:'',       //   用户输入的账号名，手机号，邮箱
+				pwd:'',        //   用户输入的密码
+				pwdType:'password',    //  密码输入框的形式
 			}
 		},
 		methods: {
@@ -121,6 +138,11 @@
 			},
 			formReset(){
 				console.log("重置");
+			},
+			lookPwd(type){
+				this.showPwd = !this.showPwd
+				this.pwdType = type
+				
 			},
 			toggleWay(){
 				this.validateSubmit=!this.validateSubmit
