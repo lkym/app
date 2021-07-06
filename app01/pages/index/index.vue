@@ -9,7 +9,7 @@
 						:duration="1000" 
 						:circular="true"
 						>
-					<swiper-item v-for="(img,index) in swiperImg" :key="img">
+					<swiper-item v-for="(img,index) in swiperImg" :key="index">
 						<!-- <view class="swiper-item"></view> -->
 						<image style="border-radius: 10px;" :src="img" mode=""></image>
 					</swiper-item>

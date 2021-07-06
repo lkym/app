@@ -75,8 +75,12 @@
 						</view>
 					</view>
 					<view class="submit-btn">
-						<button type="default" :disabled="true" form-type="submit"><text>登录</text></button>
-						<button type="default" form-type="submit"><text>一键登录</text></button>
+						<button type="default" :disabled="true" form-type="submit" @tap="submit">
+							<text>登录</text>
+						</button>
+						<button type="default" form-type="submit">
+							<text>一键登录</text>
+						</button>
 					</view>
 				</form>
 				<view class="trans-submit-way">
@@ -137,15 +141,25 @@
 				// console.log("登录");
 			},
 			formReset(){
-				console.log("重置");
+				// console.log("重置");
 			},
+			// 点击眼睛，可以查看自己输入的密码
 			lookPwd(type){
 				this.showPwd = !this.showPwd
 				this.pwdType = type
 				
 			},
+			// 切换登陆方式
 			toggleWay(){
 				this.validateSubmit=!this.validateSubmit
+			},
+			// 点击登录，进行登录
+			submit(){
+				const db = uniCloud.database()
+				const user = db.collection("user")
+				user.where({
+					phone:this.name
+				})
 			},
 			goRegister(){
 				uni.navigateTo({

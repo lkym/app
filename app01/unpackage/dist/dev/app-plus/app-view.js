@@ -3353,6 +3353,11 @@ var render = function() {
                             disabled: true,
                             "form-type": "submit",
                             _i: 30
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.$handleViewEvent($event)
+                            }
                           }
                         },
                         [
