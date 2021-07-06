@@ -37,7 +37,7 @@ export default {
 	},
 	methods: {
 		goSubmit(e){
-			console.log(e);
+			// console.log(e);
 			uni.navigateTo({
 				url:"../../pages/submit/submit",
 				success() {

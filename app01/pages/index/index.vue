@@ -79,7 +79,7 @@
 			</view>
 		</scroll-view>
 		<view class="bussiness-pro">
-			<business v-for="(item) in 4"></business>
+			<business v-for="(item) in 4" :key="item"></business>
 		</view>
 	</view>
 </template>

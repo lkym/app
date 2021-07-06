@@ -134,7 +134,7 @@
 		},
 		methods: {
 			formSubmit(){
-				console.log("登录");
+				// console.log("登录");
 			},
 			formReset(){
 				console.log("重置");
@@ -166,6 +166,10 @@
 </script>
 
 <style lang="scss" scoped>
+	uni-page-body, uni-page-refresh{
+		height: 100%;
+		background-color: #fff;
+	}
 .container{
 	width: 100%;
 	height: auto;
