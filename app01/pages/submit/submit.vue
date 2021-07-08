@@ -75,7 +75,7 @@
 						</view>
 					</view>
 					<view class="submit-btn">
-						<button type="default" :disabled="true" form-type="submit" @tap="submit">
+						<button type="default" form-type="submit" @tap="submit">
 							<text>登录</text>
 						</button>
 						<button type="default" form-type="submit">
@@ -134,11 +134,12 @@
 				name:'',       //   用户输入的账号名，手机号，邮箱
 				pwd:'',        //   用户输入的密码
 				pwdType:'password',    //  密码输入框的形式
+				submitRes:{}
 			}
 		},
 		methods: {
 			formSubmit(){
-				// console.log("登录");
+				console.log("登录");
 			},
 			formReset(){
 				// console.log("重置");
@@ -155,11 +156,71 @@
 			},
 			// 点击登录，进行登录
 			submit(){
-				const db = uniCloud.database()
-				const user = db.collection("user")
-				user.where({
-					phone:this.name
+				let callFunc = uniCloud.callFunction({
+					name:'multiSubmit',
+					data:{name:this.name,pwd:this.pwd},
+					success:(res)=> {
+						// console.log(res);
+						this.submitRes = res.result
+						// console.log(this.submitRes);
+						let data = {}
+						if(this.submitRes==""){
+							uni.showToast({
+								title:"登录失败"
+							})
+							return 
+						}else if(this.submitRes=="phone"){
+							data = {"phone":this.name,"pwd":this.pwd}
+						}else if(this.submitRes=="email"){
+							data = {"email":this.name,"pwd":this.pwd}
+						}else if(this.submitRes=="username"){
+							data = {"username":this.name,"pwd":this.pwd}
+						}
+						uni.setStorage({
+							key:"userInfo",
+							data,
+							success: () => {
+								// console.log("登陆成功");
+								uni.switchTab({
+									url:"../personality/personality",
+									fail: () => {
+										uni.showToast({
+											title:"登录失败!!!"
+										})
+									},
+									complete: ()=>{
+										uni.showToast({
+											title:"登录成功!!!"
+										})
+									}
+								})
+							}
+						})
+						// for(var i in this.submitRes){
+						// 	if(this.submitRes[i].total){
+						// 		uni.setStorage({
+						// 			key:"userInfo",
+						// 			data:{[i]:this.name,"pwd":this.pwd},
+						// 			success: () => {
+						// 				console.log("登陆成功");
+						// 				uni.switchTab({
+						// 					url:"../personality/personality",
+						// 					fail: () => {
+						// 						uni.showToast({
+						// 							title:"跳转失败"
+						// 						})
+						// 					}
+						// 				})
+						// 			}
+						// 		})
+								
+						// 	}
+							
+						// }
+					}
 				})
+			
+				
 			},
 			goRegister(){
 				uni.navigateTo({

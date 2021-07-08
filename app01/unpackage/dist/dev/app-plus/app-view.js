@@ -3350,7 +3350,6 @@ var render = function() {
                         {
                           attrs: {
                             type: "default",
-                            disabled: true,
                             "form-type": "submit",
                             _i: 30
                           },
@@ -3868,7 +3867,7 @@ var render = function() {
   return _c(
     "v-uni-view",
     { attrs: { _i: 0 } },
-    [_c("v-uni-text", { attrs: { _i: 1 } }, [_vm._v("这是个人主页")])],
+    [_c("v-uni-text", { attrs: { _i: 1 } }, [_vm._v("欢迎你")])],
     1
   )
 }
