@@ -20,8 +20,11 @@
 			</view>
 			<view class="head-search-end"></view>
 		 </view>
-		 <view class="submit-btn" @tap="goSubmit">
+		 <view class="submit-btn" @tap="goSubmit" v-if="showAvator">
 		 	<text>登录</text>
+		 </view>
+		 <view class="submit-btn" @tap="goPersonality" v-else>
+			<image src="../../static/avator.png" mode=""></image>
 		 </view>
 	 </view>
   </view>
@@ -32,8 +35,20 @@ export default {
 	data() {
 		return {
 			searchContent: '',
-			showSearchLogo:true
+			showSearchLogo:true,
+			showAvator:false
 		}
+	},
+	onShow() {
+		console.log(111);
+		const res = uni.getStorage({
+			key:"userInfo",
+		})
+		// console.log(res);
+		uni.showToast({
+			title:res.data
+		})
+		this.showAvator = res?true:false
 	},
 	methods: {
 		goSubmit(e){
@@ -49,6 +64,11 @@ export default {
 				complete() {
 					
 				}
+			})
+		},
+		goPersonality(){
+			uni.switchTab({
+				url:"../../pages/personality/personality"
 			})
 		}
 	},
@@ -131,6 +151,17 @@ export default {
 		justify-content: center;
 		align-items: center;
 		color: white;
+		uni-image{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			/deep/img,/deep/div{
+				width: 40%;
+				height: 70%;
+			}
+		}
 	}
 }
 </style>

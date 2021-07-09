@@ -811,20 +811,39 @@ var render = function() {
             ],
             1
           ),
-          _c(
-            "v-uni-view",
-            {
-              staticClass: _vm._$g(12, "sc"),
-              attrs: { _i: 12 },
-              on: {
-                click: function($event) {
-                  return _vm.$handleViewEvent($event)
-                }
-              }
-            },
-            [_c("v-uni-text", { attrs: { _i: 13 } }, [_vm._v("登录")])],
-            1
-          )
+          _vm._$g(12, "i")
+            ? _c(
+                "v-uni-view",
+                {
+                  staticClass: _vm._$g(12, "sc"),
+                  attrs: { _i: 12 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
+                [_c("v-uni-text", { attrs: { _i: 13 } }, [_vm._v("登录")])],
+                1
+              )
+            : _c(
+                "v-uni-view",
+                {
+                  staticClass: _vm._$g(14, "sc"),
+                  attrs: { _i: 14 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
+                },
+                [
+                  _c("v-uni-image", {
+                    attrs: { src: _vm._$g(15, "a-src"), mode: "", _i: 15 }
+                  })
+                ],
+                1
+              )
         ],
         1
       )
@@ -923,7 +942,7 @@ var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ../../static/jd-spri
 exports = ___CSS_LOADER_API_IMPORT___(false);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.header[data-v-bd67cea0] {\r\n  width: 100%;\r\n  height: 44px;\r\n  background-color: red;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-justify-content: space-around;\r\n          justify-content: space-around;\r\n  position: fixed;\r\n  top: 0;\r\n  z-index: 9999;\n}\n.header .head-menu[data-v-bd67cea0] {\r\n  width: 15%;\r\n  height: 44px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.header .head-menu uni-image[data-v-bd67cea0] {\r\n  width: 40%;\r\n  height: 50%;\n}\n.header .head-search[data-v-bd67cea0] {\r\n  width: 60%;\r\n  height: 44px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: start;\r\n  -webkit-justify-content: flex-start;\r\n          justify-content: flex-start;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.header .head-search .head-search-logo[data-v-bd67cea0] {\r\n  width: 15%;\r\n  height: 30px;\r\n  background-color: white;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n  background-size: 237px;\r\n  background-position: 8px 6px;\r\n  border-radius: 30px 0 0 30px;\n}\n.header .head-search .search-logo[data-v-bd67cea0] {\r\n  width: 20px;\r\n  height: 20px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  padding-left: 5px;\n}\n.header .head-search .head-search-input[data-v-bd67cea0] {\r\n  width: 70%;\r\n  height: 30px;\r\n  background-color: white;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.header .head-search .head-search-input uni-input[data-v-bd67cea0] {\r\n  padding-left: 10px;\n}\n.header .head-search .head-search-input[data-v-bd67cea0] .uni-input-input {\r\n  height: 60%;\n}\n.header .head-search .head-search-end[data-v-bd67cea0] {\r\n  width: 15%;\r\n  height: 30px;\r\n  background-color: white;\r\n  border-radius: 0 30px 30px 0;\n}\n.header .submit-btn[data-v-bd67cea0] {\r\n  width: 20%;\r\n  height: 44px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  color: white;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.header[data-v-bd67cea0] {\r\n  width: 100%;\r\n  height: 44px;\r\n  background-color: red;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-justify-content: space-around;\r\n          justify-content: space-around;\r\n  position: fixed;\r\n  top: 0;\r\n  z-index: 9999;\n}\n.header .head-menu[data-v-bd67cea0] {\r\n  width: 15%;\r\n  height: 44px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.header .head-menu uni-image[data-v-bd67cea0] {\r\n  width: 40%;\r\n  height: 50%;\n}\n.header .head-search[data-v-bd67cea0] {\r\n  width: 60%;\r\n  height: 44px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: start;\r\n  -webkit-justify-content: flex-start;\r\n          justify-content: flex-start;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.header .head-search .head-search-logo[data-v-bd67cea0] {\r\n  width: 15%;\r\n  height: 30px;\r\n  background-color: white;\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n  background-size: 237px;\r\n  background-position: 8px 6px;\r\n  border-radius: 30px 0 0 30px;\n}\n.header .head-search .search-logo[data-v-bd67cea0] {\r\n  width: 20px;\r\n  height: 20px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  padding-left: 5px;\n}\n.header .head-search .head-search-input[data-v-bd67cea0] {\r\n  width: 70%;\r\n  height: 30px;\r\n  background-color: white;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.header .head-search .head-search-input uni-input[data-v-bd67cea0] {\r\n  padding-left: 10px;\n}\n.header .head-search .head-search-input[data-v-bd67cea0] .uni-input-input {\r\n  height: 60%;\n}\n.header .head-search .head-search-end[data-v-bd67cea0] {\r\n  width: 15%;\r\n  height: 30px;\r\n  background-color: white;\r\n  border-radius: 0 30px 30px 0;\n}\n.header .submit-btn[data-v-bd67cea0] {\r\n  width: 20%;\r\n  height: 44px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\r\n  color: white;\n}\n.header .submit-btn uni-image[data-v-bd67cea0] {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n  -webkit-justify-content: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n          align-items: center;\n}\n.header .submit-btn uni-image[data-v-bd67cea0] img, .header .submit-btn uni-image[data-v-bd67cea0] div {\r\n  width: 40%;\r\n  height: 70%;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

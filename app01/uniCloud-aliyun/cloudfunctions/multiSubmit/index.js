@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
 		phone:event.name,
 		password:event.pwd
 	}).count().then((res)=>{
-		console.log(res.total);
+		// console.log(res.total);
 		if(res.total){
 			way = 'phone'
 		}else{
