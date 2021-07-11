@@ -23,7 +23,7 @@
 		 <view class="submit-btn" @tap="goSubmit" v-if="showAvator">
 		 	<text>登录</text>
 		 </view>
-		 <view class="submit-btn" @tap="goPersonality" v-else>
+		 <view class="submit-btn" @tap="goPersonality" v-if="!showAvator">
 			<image src="../../static/avator.png" mode=""></image>
 		 </view>
 	 </view>
@@ -36,19 +36,19 @@ export default {
 		return {
 			searchContent: '',
 			showSearchLogo:true,
-			showAvator:false
+			showAvator:true
 		}
 	},
-	onShow() {
-		console.log(111);
-		const res = uni.getStorage({
+	mounted() {
+		// console.log(111);
+		uni.getStorage({
 			key:"userInfo",
+		}).then((res)=>{
+			console.log(res);
+			this.showAvator = res.length>=2?false:true
 		})
-		// console.log(res);
-		uni.showToast({
-			title:res.data
-		})
-		this.showAvator = res?true:false
+		
+		
 	},
 	methods: {
 		goSubmit(e){
