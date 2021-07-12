@@ -17,7 +17,7 @@
 			
 			</view>
 			<view class="main">
-				<scroll-view class="main-left" scroll-y="true">
+				<view class="main-left">
 					<view 
 						:class="{'main-left-nav':true, 'active':choosed==index} " 
 						v-for="(item,index) in classify" 
@@ -26,10 +26,10 @@
 						>
 						<text>{{item.classifyName}}</text>
 					</view>
-				</scroll-view>
-				<scroll-view class="main-right" scroll-y="true">
+				</view>
+				<view class="main-right">
 					<shopping-show :classify="chooseItem"></shopping-show>
-				</scroll-view>
+				</view>
 			</view>
 		</view>
 	</view>
