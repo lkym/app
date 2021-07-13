@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class="head">
-			<view class="toBack">
+			<view class="toBack" @tap="goBack">
 				<i class="iconfont icon-xiangzuojiantou"></i>
 			</view>
 			<view class="head-title">
@@ -22,6 +22,14 @@
 			return {
 				
 			};
+		},
+		methods:{
+			goBack(){
+				console.log(111);
+				uni.navigateBack({
+					delta:1
+				})
+			}
 		}
 	}
 </script>

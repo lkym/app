@@ -31,4 +31,16 @@
 	uni-page-wrapper{
 		background-color: #f7f7f7;
 	}
+	
+	// tabbar 样式覆盖
+	// uni-tabbar {
+	//         .uni-tabbar { // tab背景
+	//             background-color: #07C160 !important;
+	// 			border: 1px solid #07C160 !important;
+	// 			border-top-left-radius: 10px;
+	// 			border-top-right-radius: 10px;
+				
+	// 		}
+	//     }
+	
 </style>
