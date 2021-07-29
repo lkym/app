@@ -25,9 +25,8 @@
 		},
 		methods:{
 			goBack(){
-				console.log(111);
-				uni.navigateBack({
-					delta:1
+				uni.switchTab({
+					url:"../../pages/index/index"
 				})
 			}
 		}

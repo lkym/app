@@ -121,6 +121,26 @@
 					</view>
 				</view>
 			</view>
+			
+			<view class="recommend">
+				<view class="recommend-title">
+					<view style="width: 30%;height: 1px;background: #999999;"></view>
+					<view style="width: 4px;height: 4px;border-radius: 2px;background-color: #999999;"></view>
+					<view style="margin: 0 20px;font-size: 12px;">为您推荐</view>
+					<view style="width: 4px;height: 4px;border-radius: 2px;background-color: #999999;"></view>
+					<view style="width: 30%;height: 1px;background: #999999;"></view>
+				</view>
+				<view class="recommend-content">
+					<recommend></recommend>
+					<recommend></recommend>
+					<recommend></recommend>
+					<recommend></recommend>
+					<recommend></recommend>
+					<recommend></recommend>
+				</view>
+			</view>
+			
+			
 		</view>
 		
 	</view>
@@ -128,6 +148,7 @@
 
 <script>
 	export default {
+		
 		onShow() {
 			const userInfo = uni.getStorage({
 				key:"userInfo"
@@ -136,16 +157,30 @@
 			if(userInfo){
 				userInfo.then(res=>{
 					this.userInfo = res[1].data
+					const obj = {}
 					for(let key in this.userInfo){
-						this.key = this.userInfo[key]
+						obj[key] = this.userInfo[key]
 					}
+					// 从数据库中获取用户所有信息
+					uniCloud.callFunction({
+						name:"getUserInfo",
+						data:obj,
+						success: (res) => {
+							console.log(res);
+						}
+					})
 				});
 			}else{
 				uni.navigateTo({
 					url:"../submit/submit",
 					complete() {
 						uni.showToast({
-							title:"请先登录!!"
+							title:"请先登录!!",
+							complete: () => {
+								uni.navigateTo({
+									url:"../submit/submit"
+								})
+							}
 						})
 					}
 				})
@@ -378,5 +413,26 @@
 			}
 		}
 	}
+}
+.recommend{
+	width: 100%;
+	background-color: #f6f6f6;
+	.recommend-title{
+		width: 100%;
+		display: flex;
+		margin-top: 20px;
+		justify-content: center;
+		align-items: center;
+		color: #999999;
+	}
+	.recommend-content{
+		width: 100%;
+		margin-top: 20px;
+		display: flex;
+		flex-wrap: wrap;
+		
+	}
+	
+	
 }
 </style>

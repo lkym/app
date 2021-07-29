@@ -170,11 +170,11 @@
 							})
 							return 
 						}else if(this.submitRes=="phone"){
-							data = {"phone":this.name,"pwd":this.pwd}
+							data = {"phone":this.name,"password":this.pwd}
 						}else if(this.submitRes=="email"){
-							data = {"email":this.name,"pwd":this.pwd}
+							data = {"email":this.name,"password":this.pwd}
 						}else if(this.submitRes=="username"){
-							data = {"username":this.name,"pwd":this.pwd}
+							data = {"username":this.name,"password":this.pwd}
 						}
 						uni.setStorage({
 							key:"userInfo",
@@ -196,27 +196,6 @@
 								})
 							}
 						})
-						// for(var i in this.submitRes){
-						// 	if(this.submitRes[i].total){
-						// 		uni.setStorage({
-						// 			key:"userInfo",
-						// 			data:{[i]:this.name,"pwd":this.pwd},
-						// 			success: () => {
-						// 				console.log("登陆成功");
-						// 				uni.switchTab({
-						// 					url:"../personality/personality",
-						// 					fail: () => {
-						// 						uni.showToast({
-						// 							title:"跳转失败"
-						// 						})
-						// 					}
-						// 				})
-						// 			}
-						// 		})
-								
-						// 	}
-							
-						// }
 					}
 				})
 			
