@@ -83,6 +83,8 @@
 	export default {
 		data() {
 			return {
+				businessTitle:'',
+				businessMemo:'',
 				businessNav:[],
 				businesses:[],
 				chooseNav:1,

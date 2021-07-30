@@ -430,7 +430,13 @@
 		margin-top: 20px;
 		display: flex;
 		flex-wrap: wrap;
-		
+		.recommend-box:nth-child(odd){
+			margin-right: 1px;
+		}
+		.recommend-box:nth-child(even){
+			margin-left: 1px;
+			width: 50%;
+		}
 	}
 	
 	

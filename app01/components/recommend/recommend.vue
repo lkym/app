@@ -23,7 +23,7 @@
 
 <style lang="scss" scoped>
 .recommend-box{
-	width: 50%;
+	width: 49%;
 	height: auto;
 	background-color: #FFFFFF;
 	border-radius: 10px;
@@ -33,6 +33,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 1px;
 	uni-image{
 		width: 100%;
 		height: 180px;
