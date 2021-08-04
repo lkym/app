@@ -16,6 +16,67 @@
 				</view>
 			</view>
 		</view>
+		<view class="address-management">
+			<view class="">
+				<text>收货地址管理</text>
+			</view>
+			<view class="setting-detail">
+				<text>管理我的地址 &gt;</text>
+			</view>
+		</view>
+		<view class="account-setting">
+			<view class="accout-security">
+				<view class="">
+					<text>账户与安全</text>
+				</view>
+				<view class="setting-detail">
+					<text>密码/实名认证等管理 &gt;</text>
+				</view>
+			</view>
+			<view class="accout-security" style="border: none;">
+				<view class="">
+					<text>京东支付密码</text>
+				</view>
+				<view class="setting-detail">
+					<text>已设置 &gt;</text>
+				</view>
+			</view>
+		</view>
+		<view class="account-setting">
+			<view class="accout-security">
+				<view class="">
+					<text>联系客服</text>
+				</view>
+				<view class="setting-detail">
+					<text>及时解答用户疑难 &gt;</text>
+				</view>
+			</view>
+			<view class="accout-security" style="border: none;">
+				<view class="">
+					<text>京东支付密码</text>
+				</view>
+				<view class="setting-detail">
+					<text>&gt;</text>
+				</view>
+			</view>
+		</view>
+		<view class="setting-btn">
+			<view class="setting-btn-item">
+				<image src="../../static/feedback.png" mode=""></image>
+				<text>意见反馈</text>
+			</view>
+			<view class="setting-btn-item">
+				<image src="../../static/jdlogo.png" mode=""></image>
+				<text>京东客户端</text>
+			</view>
+			<view class="setting-btn-item">
+				<image src="../../static/exit.png" mode=""></image>
+				<text>退出登录</text>
+			</view>
+		</view>
+		<view class="finally-logo">
+			<image src="../../static/jd.png" mode=""></image>
+		</view>
 	</view>
 </template>
 
@@ -90,5 +151,77 @@
 		}
 	}
 	
+}
+.address-management{
+	width: 100%;
+	height: 44px;
+	background-color: white;
+	border-radius: 10px;
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 10px;
+	box-sizing: border-box;
+	font-size: 16px;
+	color: #333;
+	
+}
+.setting-detail{
+	font-size: 12px;
+	color: #999999;
+}
+.account-setting{
+	width: 100%;
+	height: 88px;
+	margin-top: 20px;
+	background-color: white;
+	border-radius: 10px;
+	padding: 0 10px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	.accout-security{
+		width: 100%;
+		height: 44px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid rgba($color: #999999, $alpha: 0.3);
+		box-sizing: border-box;
+		
+	}
+}
+.setting-btn{
+	width: 100%;
+	height: 44px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 15px;
+	.setting-btn-item{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 12px;
+		color: #666666;
+		uni-image{
+			width: 21px;
+			height: 18px;
+			margin-right: 3px;
+		}
+	}
+	
+}
+.finally-logo{
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	uni-image{
+		width: 100px;
+		height: 20px;
+	}
 }
 </style>
