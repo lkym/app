@@ -9,9 +9,11 @@
 		"count": true
 	},
 	"properties": {
+		// 用户id
 		"_id": {
 			"description": "ID，系统自动生成"
 		},
+		// 用户手机号
 		"phone": {
 			"description": "手机号码，必有",
 			"bsonType": "string",
@@ -20,14 +22,17 @@
 				"read": true
 			}
 		},
+		// 用户邮件
 		"email": {
 			"description": "手机邮箱",
 			"bsonType": "string"
 		},
+		// 用户姓名
 		"username": {
 			"description": "用户名",
 			"bsonType": "string"
 		},
+		// 用户密码
 		"password": {
 			"description": "用户密码",
 			"bsonType": "string",
@@ -35,6 +40,19 @@
 				"write": true,
 				"read": false
 			}
+		},
+		// 用户商品收藏
+		"businessCollect":{
+			"description":"用户商品收藏",
+			"bsonType":"int",
+			"defaultValue":0,
+			"permission":{
+				"write":true,
+				"read":true
+			}
 		}
+		// 用户店铺收藏
+		
+		// 我的足迹
 	}
 }

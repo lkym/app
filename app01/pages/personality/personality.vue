@@ -10,7 +10,7 @@
 						</view>
 						<view class="person-setting">
 							<view class="person-setting-left">
-								<text style="font-size: 18px;">11111</text>
+								<text style="font-size: 18px;">{{username}}</text>
 								<view class="person-sign">
 									<text>京享值</text>
 									<text>小白信用0.0 ></text>
@@ -166,7 +166,8 @@
 						name:"getUserInfo",
 						data:obj,
 						success: (res) => {
-							console.log(res);
+							// console.log(res);
+							this.username = res.result[0].username
 						}
 					})
 				});
@@ -190,7 +191,8 @@
 		data() {
 			return {
 				userInfo:'',
-				title:"我的京东"
+				title:"我的京东",
+				username:'',
 			}
 		},
 		methods: {
@@ -245,6 +247,9 @@
 				.person-setting-left{
 					width: 90%;
 					color: white;
+					text-overflow: ellipsis;
+					overflow: hidden;
+					white-space: nowrap;
 					.person-sign{
 						text{
 							line-height: 12px;
