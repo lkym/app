@@ -17,7 +17,7 @@
 <script>
 	export default {
 		name:"commHead",
-		props:['title'],
+		props:['title','border'],
 		data() {
 			return {
 				
@@ -25,8 +25,8 @@
 		},
 		methods:{
 			goBack(){
-				uni.switchTab({
-					url:"../../pages/index/index"
+				uni.navigateBack({
+					delta:1
 				})
 			}
 		}
@@ -40,6 +40,7 @@
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+	border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
 	.toBack{
 		width: 10%;
 		height: 44px;

@@ -16,22 +16,22 @@
 									<text>小白信用0.0 ></text>
 								</view>
 							</view>
-							<view class="person-setting-right">
+							<view class="person-setting-right" @tap="toSetting">
 								<image src="../../static/setting.png" mode=""></image>
 							</view>
 						</view>
 					</view>
 					<view class="person-action">
 						<view class="person-action-item">
-							<text class="person-action-number">7</text>
+							<text class="person-action-number">0</text>
 							<text>商品收藏</text>
 						</view>
 						<view class="person-action-item">
-							<text class="person-action-number">7</text>
+							<text class="person-action-number">0</text>
 							<text>店铺收藏</text>
 						</view>
 						<view class="person-action-item">
-							<text class="person-action-number">7</text>
+							<text class="person-action-number">0</text>
 							<text>我的足迹</text>
 						</view>
 					</view>
@@ -196,7 +196,17 @@
 			}
 		},
 		methods: {
-			
+			toSetting(){
+				uni.navigateTo({
+					url:"../setting/setting",
+					success: () => {
+						
+					},
+					fail: () => {
+						
+					}
+				})
+			},
 		}
 	}
 </script>

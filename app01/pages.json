@@ -111,6 +111,19 @@
             }
             
         }
+        ,{
+            "path" : "pages/setting/setting",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus":{
+					"titleNView":false
+				}
+				
+            }
+            
+        }
     ],
 	"tabBar":{
 		"iconWidth":"25px",
