@@ -149,7 +149,7 @@
 <script>
 	export default {
 		
-		onShow() {
+		onLoad() {
 			uni.getStorage({
 				key:"userInfo"
 			}).then((res)=>{
@@ -180,9 +180,9 @@
 							uni.showToast({
 								title:"请先登录!!",
 								complete: () => {
-									uni.navigateTo({
-										url:"../submit/submit"
-									})
+									// uni.navigateTo({
+									// 	url:"../submit/submit"
+									// })
 								}
 							})
 						}
@@ -199,6 +199,7 @@
 				title:"我的京东",
 				userId:'',
 				username:'',
+				
 			}
 		},
 		methods: {

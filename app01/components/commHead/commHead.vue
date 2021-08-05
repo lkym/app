@@ -17,7 +17,7 @@
 <script>
 	export default {
 		name:"commHead",
-		props:['title','border'],
+		props:['title','url'],
 		data() {
 			return {
 				
@@ -25,9 +25,17 @@
 		},
 		methods:{
 			goBack(){
-				uni.navigateBack({
-					delta:1
-				})
+				console.log(this);
+				if(this.$props.url){
+					uni.switchTab({
+						url:this.$props.url
+					})
+				}else{
+					uni.navigateBack({
+						delta:1
+					})
+				}
+				
 			}
 		}
 	}

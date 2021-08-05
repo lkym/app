@@ -29,14 +29,12 @@
             "path" : "pages/submit/submit",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "京东登录注册",
+                // "navigationBarTitleText": "京东登录注册",
                 "enablePullDownRefresh": false,
 				"navigationBarBackgroundColor":"#FFFFFF",
 				"navigationBarTextStyle":"black",
 				"app-plus":{
-					"titleNView":{
-						"titleSize":"20px"
-					}
+					"titleNView":false
 				}
 				
 				

@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<commHead title="京东登录注册" :url="url"></commHead>
 		<view class="container">
 			<view>
 				<form @submit="formSubmit" @reset="formReset">
@@ -134,7 +135,8 @@
 				name:'',       //   用户输入的账号名，手机号，邮箱
 				pwd:'',        //   用户输入的密码
 				pwdType:'password',    //  密码输入框的形式
-				submitRes:{}
+				submitRes:{},
+				url:"../index/index"    //  跳转路径
 			}
 		},
 		methods: {
