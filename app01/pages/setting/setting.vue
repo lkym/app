@@ -7,8 +7,8 @@
 				<view class="user-card-info">
 					<image src="../../static/avatorImg.png" mode=""></image>
 					<view class="user-card-name">
-						<text>1111</text>
-						<text>222222222222222222222222222222222222222222222222222</text>
+						<text>{{userId}}</text>
+						<text>用户名：{{username}}</text>
 					</view>
 				</view>
 				<view class="user-card-sign">
@@ -71,7 +71,7 @@
 			</view>
 			<view class="setting-btn-item">
 				<image src="../../static/exit.png" mode=""></image>
-				<text>退出登录</text>
+				<text @tap="exitSubmit">退出登录</text>
 			</view>
 		</view>
 		<view class="finally-logo">
@@ -84,11 +84,34 @@
 	export default {
 		data() {
 			return {
-				title:'账户设置'
+				title:'账户设置',
+				userId:'',
+				username:''
 			}
 		},
-		methods: {
+		onLoad(options){
+			console.log(options);
+			this.userId = options.userId
+			this.username = options.username
 			
+		},
+		methods: {
+			exitSubmit(){
+				uni.removeStorage({
+					key: 'userInfo',
+					success: () => {
+							uni.switchTab({
+								url:"../index/index"
+							})
+					}
+				})
+				// .then(()=>{
+				// 	uni.switchTab({
+				// 		url:"../index/index"
+				// 	})
+				// })
+				
+			}
 		}
 	}
 </script>
@@ -131,11 +154,15 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: flex-start;
+				font-size: 12px;
 				uni-text:last-child{
 					width: 100%;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					white-space: nowrap;
+					font-size: 12px;
+					color: #999999;
+					margin-top: 3px;
 				}
 			}
 		}

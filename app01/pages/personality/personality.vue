@@ -150,12 +150,12 @@
 	export default {
 		
 		onShow() {
-			const userInfo = uni.getStorage({
+			uni.getStorage({
 				key:"userInfo"
-			})
-			// this.userInfo = userInfo
-			if(userInfo){
-				userInfo.then(res=>{
+			}).then((res)=>{
+				// console.log(res);
+				if(res.length>1){
+					
 					this.userInfo = res[1].data
 					const obj = {}
 					for(let key in this.userInfo){
@@ -166,39 +166,45 @@
 						name:"getUserInfo",
 						data:obj,
 						success: (res) => {
-							// console.log(res);
+							console.log("res",res);
+							this.userId = res.result[0]._id
 							this.username = res.result[0].username
+							
 						}
 					})
-				});
-			}else{
-				uni.navigateTo({
-					url:"../submit/submit",
-					complete() {
-						uni.showToast({
-							title:"请先登录!!",
-							complete: () => {
-								uni.navigateTo({
-									url:"../submit/submit"
-								})
-							}
-						})
-					}
-				})
-			}
+					
+				}else{
+					uni.navigateTo({
+						url:"../submit/submit",
+						complete() {
+							uni.showToast({
+								title:"请先登录!!",
+								complete: () => {
+									uni.navigateTo({
+										url:"../submit/submit"
+									})
+								}
+							})
+						}
+					})
+				}
+			})
+			// this.userInfo = userInfo
+			
 			
 		},
 		data() {
 			return {
 				userInfo:'',
 				title:"我的京东",
+				userId:'',
 				username:'',
 			}
 		},
 		methods: {
 			toSetting(){
 				uni.navigateTo({
-					url:"../setting/setting",
+					url:"../setting/setting?userId="+this.userId+"&username="+this.username,
 					success: () => {
 						
 					},
