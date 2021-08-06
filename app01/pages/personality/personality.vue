@@ -104,19 +104,19 @@
 						</view>
 						<view class="logo">
 							<image src="../../static/tools2.png" mode=""></image>
-							<text>客户服务</text>
+							<text>我的预约</text>
 						</view>
 						<view class="logo">
 							<image src="../../static/tools3.png" mode=""></image>
-							<text>客户服务</text>
+							<text>我的问答</text>
 						</view>
 						<view class="logo">
 							<image src="../../static/tools4.png" mode=""></image>
-							<text>客户服务</text>
+							<text>闲置还钱</text>
 						</view>
 						<view class="logo">
 							<image src="../../static/tools5.png" mode=""></image>
-							<text>客户服务</text>
+							<text>高价回收</text>
 						</view>
 					</view>
 				</view>
@@ -149,7 +149,7 @@
 <script>
 	export default {
 		
-		onLoad() {
+		onShow() {
 			uni.getStorage({
 				key:"userInfo"
 			}).then((res)=>{
@@ -166,7 +166,7 @@
 						name:"getUserInfo",
 						data:obj,
 						success: (res) => {
-							console.log("res",res);
+							// console.log("res",res);
 							this.userId = res.result[0]._id
 							this.username = res.result[0].username
 							

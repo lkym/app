@@ -122,6 +122,18 @@
             }
             
         }
+        ,{
+            "path" : "pages/certification/certification",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus":{
+					"titleNView":false
+				}
+            }
+            
+        }
     ],
 	"tabBar":{
 		"iconWidth":"25px",

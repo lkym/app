@@ -21,7 +21,9 @@
 				<text>收货地址管理</text>
 			</view>
 			<view class="setting-detail">
-				<text>管理我的地址 &gt;</text>
+				<text>管理我的地址 
+					<i class="iconfont icon-xiangyou"></i>
+				</text>
 			</view>
 		</view>
 		<view class="account-setting">
@@ -29,8 +31,10 @@
 				<view class="">
 					<text>账户与安全</text>
 				</view>
-				<view class="setting-detail">
-					<text>密码/实名认证等管理 &gt;</text>
+				<view class="setting-detail" @tap="toCertification">
+					<text>密码/实名认证等管理 
+						<i class="iconfont icon-xiangyou"></i>
+					</text>
 				</view>
 			</view>
 			<view class="accout-security" style="border: none;">
@@ -38,7 +42,9 @@
 					<text>京东支付密码</text>
 				</view>
 				<view class="setting-detail">
-					<text>已设置 &gt;</text>
+					<text>已设置 
+						<i class="iconfont icon-xiangyou"></i>
+					</text>
 				</view>
 			</view>
 		</view>
@@ -48,7 +54,9 @@
 					<text>联系客服</text>
 				</view>
 				<view class="setting-detail">
-					<text>及时解答用户疑难 &gt;</text>
+					<text>及时解答用户疑难
+						<i class="iconfont icon-xiangyou"></i>
+					</text>
 				</view>
 			</view>
 			<view class="accout-security" style="border: none;">
@@ -56,7 +64,9 @@
 					<text>京东支付密码</text>
 				</view>
 				<view class="setting-detail">
-					<text>&gt;</text>
+					<text>
+						<i class="iconfont icon-xiangyou"></i>
+					</text>
 				</view>
 			</view>
 		</view>
@@ -89,8 +99,8 @@
 				username:''
 			}
 		},
-		onLoad(options){
-			console.log(options);
+		onLoad(options) {
+			// console.log(options);
 			this.userId = options.userId
 			this.username = options.username
 			
@@ -111,7 +121,13 @@
 				// 	})
 				// })
 				
+			},
+			toCertification(){
+				uni.navigateTo({
+					url:"../certification/certification?id="+this.userId
+				})
 			}
+		
 		}
 	}
 </script>
@@ -197,6 +213,9 @@
 .setting-detail{
 	font-size: 12px;
 	color: #999999;
+	i{
+		font-size: 12px;
+	}
 }
 .account-setting{
 	width: 100%;
