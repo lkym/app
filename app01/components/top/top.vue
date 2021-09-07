@@ -44,7 +44,7 @@ export default {
 		uni.getStorage({
 			key:"userInfo",
 		}).then((res)=>{
-			console.log(res);
+			console.log('111',res);
 			this.showAvator = res.length>=2?false:true
 		})
 		

@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<top></top>
+		<top v-if="showTop"></top>
 		<scroll-view scroll-y="true" style="margin-top: 44px;">
 			<view style="background-image: url(../../static/bg.png);background-position: 0 -200px;;background-size: cover;background-repeat: no-repeat;">
 				<swiper :indicator-dots="true" 
@@ -44,7 +44,7 @@
 					<view style="flex: 1;margin: 10px;"><h3>国潮风尚</h3></view>
 				</view>
 				<view style="display: flex;">
-					<view class="call" v-for="(item) in callBusiness">
+					<view class="call" v-for="(item,index) in callBusiness" :key="index">
 						<text>{{item.intro}}</text>
 						<image :src="item.url"></image>
 					</view>
@@ -88,6 +88,7 @@
 	export default {
 		data() {
 			return {
+				showTop: true,
 				title: 'Hello',
 				swiperImg:[],
 				lifeServices:[],
@@ -98,6 +99,7 @@
 				seckillGoods:[],
 			}
 		},
+		
 		onLoad() {
 			// 轮播图图片
 			this.swiperImg=[
@@ -155,6 +157,12 @@
 			this.secondGap=new Date().getSeconds()
 			console.log(this.hourGap,this.minuteGap,this.secondGap);
 			
+		},
+		onShow() {
+			this.showTop = false
+			this.$nextTick(function(){
+				this.showTop = true
+			})
 		},
 		methods: {
 
