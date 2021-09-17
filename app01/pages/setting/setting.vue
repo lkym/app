@@ -21,7 +21,8 @@
 				<text>收货地址管理</text>
 			</view>
 			<view class="setting-detail">
-				<text>管理我的地址 
+				<text @tap="manageMyAddress">
+					管理我的地址 
 					<i class="iconfont icon-xiangyou"></i>
 				</text>
 			</view>
@@ -106,6 +107,7 @@
 			
 		},
 		methods: {
+			//  退出登录
 			exitSubmit(){
 				uni.removeStorage({
 					key: 'userInfo',
@@ -122,11 +124,18 @@
 				// })
 				
 			},
+			//  身份认证
 			toCertification(){
 				uni.navigateTo({
 					url:"../certification/certification?id="+this.userId
 				})
-			}
+			},
+			// 管理地址
+			manageMyAddress(){
+				uni.navigateTo({
+					url:"../myAddress/myAddress?id="+this.userId
+				})
+			},
 		
 		}
 	}
