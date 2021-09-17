@@ -18,17 +18,23 @@
 			</view>
 			<view class="main">
 				<view class="main-left">
-					<view 
-						:class="{'main-left-nav':true, 'active':choosed==index} " 
-						v-for="(item,index) in classify" 
-						:key="index"
-						@click="showShopping(index)"
-						>
-						<text>{{item.classifyName}}</text>
-					</view>
+					<scroll-view scroll-y="true" class="scroll-Y" show-scrollbar="false">
+						<view
+							:class="{'main-left-nav':true, 'active':choosed==index} " 
+							v-for="(item,index) in classify" 
+							:key="index"
+							@click="showShopping(index)"
+							>
+							<text>{{item.classifyName}}</text>
+						</view>
+					</scroll-view>
+					
 				</view>
 				<view class="main-right">
-					<shopping-show :classify="chooseItem"></shopping-show>
+					<scroll-view scroll-y="true" class="scroll-Y">
+						<shopping-show :classify="chooseItem"></shopping-show>
+					</scroll-view>
+					
 				</view>
 			</view>
 		</view>
@@ -38,6 +44,7 @@
 <script>
 	import ShoppingShow from './shopping-show.vue'
 	export default {
+		
 		data() {
 			return {
 				showMenu:false,
@@ -73,6 +80,21 @@
 		components:{
 			ShoppingShow
 		},
+		onLoad() {
+			this.$nextTick(()=>{
+				const main = document.getElementsByClassName("main")[0]
+				const scrollY = document.getElementsByClassName("scroll-Y")
+				uni.getSystemInfo({
+					success: (res) => {
+						// main.style.height = res.screenHeight
+						console.log(res.screenHeight-44-50);
+						main.style.height = (res.screenHeight-44-50)+'px'
+						scrollY[0].style.height = (res.screenHeight-44-50)+'px'
+						scrollY[1].style.height = (res.screenHeight-44-50)+'px'
+					}
+				})
+			})
+		},
 		mounted(){
 			this.chooseItem=this.classify[0]
 		},
@@ -104,6 +126,7 @@
 
 <style lang="scss" scoped>
 .container{
+	padding-top: 44px;
 	.head{
 		width: 100%;
 		height: 44px;
@@ -170,10 +193,16 @@
 		}
 	}
 	.main{
-		height: 100%;
 		display: flex;
 		justify-content: flex-start;
-		margin-top: 44px;
+		overflow: hidden;
+		.scroll-Y{
+			::-webkit-scrollbar {
+					width: 0;
+					height: 0;
+					background-color: transparent;
+			} 
+		}
 		.main-left{
 			width: 20%;
 			height: calc(100%-44px-50px);
