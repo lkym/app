@@ -1,0 +1,65 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": ["name","phone","area","detailArea","addressSign","default"],
+	"permission": {
+		"read": true,
+		"create": true,
+		"update": true,
+		"delete": true
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"name": {
+			"description":"收货人姓名",
+			"bsonType":"string",
+			"permission":{
+				"read":"true",
+				"write":"true"
+			}	
+		},
+		"phone": {
+			"description":"用户ID，用于关联用户表",
+			"bsonType":"string",
+			"permission":{
+				"read":"true",
+				"write":"false"
+			}			
+		},
+		"area":{
+			"description":"所在地区",
+			"bsonType":"array",
+			"permission":{
+				"read":"true",
+				"write":"true"
+			}
+		},
+		"detailArea":{
+			"description":"详细地址",
+			"bsonType":"string",
+			"permission":{
+				"read": "true",
+				"write":"true"
+			}
+		},
+		"addressSign":{
+			"description":"地址标签",
+			"bsonType":"string",
+			"permission":{
+				"read":"true",
+				"write":"true"
+			}
+		},
+		"default":{
+			"description":"是否是默认地址",
+			"defaultValue": 0,
+			"bsonType": "int",
+			"permission":{
+				"read":"true",
+				"write":"true"
+			}
+		}
+	}
+}

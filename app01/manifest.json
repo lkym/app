@@ -83,7 +83,12 @@
                 }
             },
             "splashscreen" : {
-                "androidStyle" : "common"
+                "androidStyle" : "default",
+                "android" : {
+                    "hdpi" : "static/start.png",
+                    "xhdpi" : "static/start.png",
+                    "xxhdpi" : "static/start.png"
+                }
             }
         }
     },
