@@ -5,7 +5,7 @@
 			<addressItem :addressList="addressList"></addressItem>
 		</view>
 		<view class="add-address">
-			<button class="add-btn" type="default">新增地址</button>
+			<button class="add-btn" type="default" @tap="addAddress">新增地址</button>
 		</view>
 	</view>
 </template>
@@ -40,7 +40,11 @@
 			}
 		},
 		methods: {
-			
+			addAddress(){
+				uni.navigateTo({
+					url:"../addAddress/addAddress"
+				})
+			}
 		}
 	}
 </script>
