@@ -10,17 +10,31 @@
 		</view>
 		<view class="input-content">
 			<view class="title">所在地区</view>
-			<picker-view indicator-style="height:50px;line-height:50px;" :value="value" @change="getAddress" class="picker-view">
-				<picker-view-column>
-					<view class="item" v-for="(item,index) in country" :key="index">{{item}}</view>
-				</picker-view-column>
-				<picker-view-column>
-					<view class="item" v-for="(item,index) in province" :key="index">{{item}}</view>
-				</picker-view-column>
-				<picker-view-column>
-					<view class="item" v-for="(item,index) in city" :key="index">{{item}}</view>
-				</picker-view-column>
-			</picker-view>
+			<view style="width: 75%;">
+				{{chooseAddress}}
+			</view>
+			<view style="color: #d8d8d8;" @tap="visible = true">
+				<i class="iconfont icon-xiangyou"></i>
+			</view>
+			<view v-if="visible" class="picker-div" @touchstart="touchstart" @touchend="touchend">
+				<picker-view 
+					indicator-style="height:50px;line-height:50px;" 
+					:value="value" 
+					@change="getAddress" 
+					class="picker-view" 
+					>
+					<picker-view-column>
+						<view class="item" v-for="(item,index) in country" :key="index">{{item}}</view>
+					</picker-view-column>
+					<picker-view-column>
+						<view class="item" v-for="(item,index) in province" :key="index">{{item}}</view>
+					</picker-view-column>
+					<picker-view-column>
+						<view class="item" v-for="(item,index) in city" :key="index">{{item}}</view>
+					</picker-view-column>
+				</picker-view>
+			</view>
+			
 		</view>
 		<view class="input-content">
 			<view class="title">详细地址</view>
@@ -37,17 +51,63 @@
 	export default {
 		data() {
 			return {
-				country:['中国', '美国', '巴西', '日本'],
-				province:['重庆', '成都', '北京', '西安'],
-				city:['合川', '榆中', '渝北', '九龙坡'],
+				country:['请选择','中国', '港澳地区', '外国'],
+				province:[],
+				city:[],
 				index: 0,
-				value:[]
+				value:[],
+				chooseAddress: '',
+				visible: false,
+				clientX: 0,
+				clientY: 0,
 			}
 		},
 		methods: {
-			// getAddress(e){
-			// 	this.index = e.target.value
-			// }
+			getAddress(e){
+				this.value = e.detail.value
+				// console.log(e.detail.value);
+				// if(addressArr.length){
+				this.chooseAddress = ''
+				this.value.forEach((item,index)=>{
+					if(item != 0 && this.value.length == 3){
+						this.chooseAddress = index == 0
+											?
+											this.chooseAddress + this.country[item]
+											:(index == 1
+											?
+											this.chooseAddress + this.province[item]
+											:(index == 2
+											?
+											this.chooseAddress + this.city[item]
+											:
+											this.chooseAddress + ''
+											)
+											)
+											
+					}
+					
+				})
+				
+				// 	console.log(this.value);
+				// }
+			},
+			touchstart(e){
+				this.clientX = e.changedTouches[0].clientX
+				this.clientY = e.changedTouches[0].clientY
+				
+			},
+			touchend(e){
+				let clientY;
+				clientY = e.changedTouches[0].clientY
+				if(this.clientY < 435){
+					if(clientY - this.clientY > 50){
+						this.visible = false
+					}
+				}
+				
+				
+			},
+		
 		}
 	}
 </script>
@@ -71,20 +131,29 @@
 			}
 		}
 	}
-	
-	.picker-view {
-	        width: 100%;
-	        height: 300px;
-	        margin-top: 20px;
-			position: fixed;
-			bottom: 0;
-	    }
-	    .item {
-	        height: 50px;
+	.picker-div{
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.1);
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		padding: 0;
+		.picker-view {
+		        width: 100%;
+		        height: 300px;
+		        margin-top: 20px;
+				position: fixed;
+				bottom: 0;
+		    }
+		.item {
+			height: 50px;
 			line-height: 50px;
-	        align-items: center;
-	        justify-content: center;
-	        text-align: center;
-	    }
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+		}
+	}
+	
 	
 </style>
