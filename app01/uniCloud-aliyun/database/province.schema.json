@@ -1,0 +1,28 @@
+// 文档教程: https://uniapp.dcloud.net.cn/uniCloud/schema
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": false,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"province_id": {
+			"description":"省份ID",
+			"bsonType":"int"
+		},
+		"province_name": {
+			"description":"省份名称",
+			"bsonType":"string",
+			"permission":{
+				"write":"false",
+				"read":"true"
+			}
+		}
+	}
+}

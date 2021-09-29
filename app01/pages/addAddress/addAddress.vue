@@ -13,7 +13,7 @@
 			<view style="width: 75%;">
 				{{chooseAddress}}
 			</view>
-			<view style="color: #d8d8d8;" @tap="visible = true">
+			<view style="color: #d8d8d8;" @tap="toChooseAddress(1,1)">
 				<i class="iconfont icon-xiangyou"></i>
 			</view>
 			<view v-if="visible" class="picker-div" @touchstart="touchstart" @touchend="touchend">
@@ -24,13 +24,13 @@
 					class="picker-view" 
 					>
 					<picker-view-column>
-						<view class="item" v-for="(item,index) in country" :key="index">{{item}}</view>
+						<view class="item" v-for="(item,index) in province" :key="index">{{item.province_name}}</view>
 					</picker-view-column>
 					<picker-view-column>
-						<view class="item" v-for="(item,index) in province" :key="index">{{item}}</view>
+						<view class="item" v-for="(item,index) in city" :key="index">{{item.city_name}}</view>
 					</picker-view-column>
 					<picker-view-column>
-						<view class="item" v-for="(item,index) in city" :key="index">{{item}}</view>
+						<view class="item" v-for="(item,index) in district" :key="index">{{item.district_name}}</view>
 					</picker-view-column>
 				</picker-view>
 			</view>
@@ -51,9 +51,10 @@
 	export default {
 		data() {
 			return {
-				country:['请选择','中国', '港澳地区', '外国'],
+				// country:['请选择','中国', '港澳地区', '外国'],
 				province:[],
 				city:[],
+				district: [],
 				index: 0,
 				value:[],
 				chooseAddress: '',
@@ -63,30 +64,65 @@
 			}
 		},
 		methods: {
+			toChooseAddress(id,level){
+				if(id == undefined){
+					id = 1
+				}
+				if(level == undefined){
+					level = 1
+				}
+				const _this = this
+				uniCloud.callFunction({
+					name: 'getAddress',
+					data: {
+							id,
+							level,
+						},
+					success(res) {
+						if(level == 1){
+							_this.province = res.result.data
+						}else if(level == 2){
+							_this.city = res.result.data
+						}else if(level == 3){
+							_this.district = res.result.data
+						}
+						
+						_this.visible = true
+					}
+				})
+				
+			},
 			getAddress(e){
 				this.value = e.detail.value
-				// console.log(e.detail.value);
+				
+				console.log(e);
+				console.log(this.value);
+				// 获取市级
+				const provice_id = this.province[e.detail.value[0]].province_id;
+				
+				this.toChooseAddress(provice_id,2)
+				
 				// if(addressArr.length){
-				this.chooseAddress = ''
-				this.value.forEach((item,index)=>{
-					if(item != 0 && this.value.length == 3){
-						this.chooseAddress = index == 0
-											?
-											this.chooseAddress + this.country[item]
-											:(index == 1
-											?
-											this.chooseAddress + this.province[item]
-											:(index == 2
-											?
-											this.chooseAddress + this.city[item]
-											:
-											this.chooseAddress + ''
-											)
-											)
+				// this.chooseAddress = ''
+				// this.value.forEach((item,index)=>{
+				// 	if(item != 0 && this.value.length == 3){
+				// 		this.chooseAddress = index == 0
+				// 							?
+				// 							this.chooseAddress + this.country[item]
+				// 							:(index == 1
+				// 							?
+				// 							this.chooseAddress + this.province[item]
+				// 							:(index == 2
+				// 							?
+				// 							this.chooseAddress + this.city[item]
+				// 							:
+				// 							this.chooseAddress + ''
+				// 							)
+				// 							)
 											
-					}
+				// 	}
 					
-				})
+				// })
 				
 				// 	console.log(this.value);
 				// }
@@ -102,6 +138,9 @@
 				if(this.clientY < 435){
 					if(clientY - this.clientY > 50){
 						this.visible = false
+						this.province = []
+						this.city = []
+						this.district = []
 					}
 				}
 				
