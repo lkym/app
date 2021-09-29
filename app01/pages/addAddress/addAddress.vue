@@ -10,7 +10,7 @@
 		</view>
 		<view class="input-content">
 			<view class="title">所在地区</view>
-			<view style="width: 75%;">
+			<view style="width: 75%;font-size: 14px;">
 				{{chooseAddress}}
 			</view>
 			<view style="color: #d8d8d8;" @tap="toChooseAddress(1,1)">
@@ -81,8 +81,21 @@
 					success(res) {
 						if(level == 1){
 							_this.province = res.result.data
+							if(_this.value.length){
+								_this.toChooseAddress(_this.province[_this.value[0]]["province_id"],2)
+							}else{
+								_this.toChooseAddress(_this.province[0]["province_id"],2)
+							}
+							
 						}else if(level == 2){
 							_this.city = res.result.data
+							if(_this.value.length){
+								_this.toChooseAddress(_this.city[_this.value[1]]["city_id"],3)
+							}else{
+								_this.toChooseAddress(_this.city[0]["city_id"],3)
+								_this.value = [0,0,0]
+							}
+							
 						}else if(level == 3){
 							_this.district = res.result.data
 						}
@@ -93,14 +106,19 @@
 				
 			},
 			getAddress(e){
+				
 				this.value = e.detail.value
 				
-				console.log(e);
+				// console.log(e);
 				console.log(this.value);
 				// 获取市级
 				const provice_id = this.province[e.detail.value[0]].province_id;
 				
 				this.toChooseAddress(provice_id,2)
+				
+				// const city_id = this.city[e.detail.value[1]].city_id;
+				
+				// this.toChooseAddress(city_id,2)
 				
 				// if(addressArr.length){
 				// this.chooseAddress = ''
@@ -137,17 +155,24 @@
 				clientY = e.changedTouches[0].clientY
 				if(this.clientY < 435){
 					if(clientY - this.clientY > 50){
-						this.visible = false
+						this.chooseAddress = ''
+						
+						this.chooseAddress = this.chooseAddress + " " + this.province[this.value[0]]["province_name"]
+						this.chooseAddress = this.chooseAddress + " " + this.city[this.value[1]]["city_name"]
+						this.chooseAddress = this.chooseAddress + " " + this.district[this.value[2]]["district_name"]
+							
+						
 						this.province = []
 						this.city = []
 						this.district = []
+						this.visible = false
 					}
 				}
 				
 				
 			},
 		
-		}
+		},
 	}
 </script>
 

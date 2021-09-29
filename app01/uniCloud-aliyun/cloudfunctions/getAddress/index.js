@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
 		data = city
 	}else if(event.level == 3){
 		const db = uniCloud.database()
-		const district = await db.collection('district').get()
+		const district = await db.collection('district').where({'city_id': event.id}).get()
 		data = district
 	}
 	
