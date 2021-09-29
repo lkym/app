@@ -2,11 +2,11 @@
 	<view class="container">
 		<view class="input-content">
 			<view class="title">收货人</view>
-			<input class="uni-input" focus placeholder="姓名" />
+			<input class="uni-input" focus placeholder="姓名" v-model="name" />
 		</view>
 		<view class="input-content">
 			<view class="title">联系方式</view>
-			<input class="uni-input" focus placeholder="手机号码" />
+			<input class="uni-input" focus placeholder="手机号码" v-model="phone" />
 		</view>
 		<view class="input-content">
 			<view class="title">所在地区</view>
@@ -38,11 +38,35 @@
 		</view>
 		<view class="input-content">
 			<view class="title">详细地址</view>
-			<input class="uni-input" focus placeholder="姓名" />
+			<textarea @blur="getDetailAddress" placeholder-style="color:#dcdbdb" placeholder="详细地址需填写楼栋楼层或房间号信息"/>
 		</view>
 		<view class="input-content">
 			<view class="title">地址标签</view>
-			<input class="uni-input" focus placeholder="姓名" />
+			<view class="address-sign">
+				<view 
+					:class="{'active':item.checked}" 
+					v-for="(item,index) in addressSignArr" 
+					:key="index"
+					@tap="changeSign(index)"
+					>
+					{{item.sign}}
+				</view>
+				<view class="">自定义<icon type="clear" size="14"></icon></view>
+			</view>
+			<!-- <input class="uni-input" focus placeholder="姓名" /> -->
+		</view>
+		<view class="set-default">
+			<view class="title">
+				<text>设置默认地址</text>
+				<text>提醒: 每次下单会默认推荐该地址</text>
+			</view>
+			<view class="">
+				<switch color="#f2270c" @change="setDefaultAddress"/>
+			</view>
+			
+		</view>
+		<view class="input-content">
+			<button class="ensure-btn" type="default" @tap="addAddress">确认</button>
 		</view>
 	</view>
 </template>
@@ -51,6 +75,8 @@
 	export default {
 		data() {
 			return {
+				name: '',
+				phone: '',
 				// country:['请选择','中国', '港澳地区', '外国'],
 				province:[],
 				city:[],
@@ -61,6 +87,14 @@
 				visible: false,
 				clientX: 0,
 				clientY: 0,
+				detailAddress: '',
+				addressSignArr: [
+					{"sign":"公司","checked":false},
+					{"sign":"家","checked":false},
+					{"sign":"学校","checked":false},
+					],
+				addressSign: '',
+				default: false
 			}
 		},
 		methods: {
@@ -171,7 +205,30 @@
 				
 				
 			},
-		
+			changeSign(index){
+				this.addressSignArr.map((item,i)=>{
+					item.checked = index == i?true:false
+				})
+				this.addressSign =	this.addressSignArr[index].sign
+			},
+			setDefaultAddress(e){
+				this.default = e.target.value
+			},
+			getDetailAddress(e){
+				this.detailAddress = e.detail.value
+			},
+			addAddress(){
+				const addressInfo = {
+					name: this.name,
+					phone: this.phone,
+					area: this.chooseAddress.split(" "),
+					detailArea: this.detailAddress,
+					addressSign: this.addressSign,
+					default: this.default,
+				}
+				
+				console.log(addressInfo);
+			}
 		},
 	}
 </script>
@@ -184,25 +241,85 @@
 			padding: 12px 10px;
 			border-bottom: 1px solid #e7e7e7;
 			.title{
-				width: 85px;
+				width: 75px;
 				color: #999999;
 				font-size: 14px;
 			}
 			.uni-input{
 				
 				font-size: 14px;
-				color: #e7e7e7;
+				color: #585858;
+			}
+			uni-textarea{
+				height: 42px;
+				overflow-y: auto;
+				font-size: 14px;
+			}
+			.address-sign{
+				font-size: 14px;
+				color: #C0C0C0;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: flex-start;
+				align-items: center;
+				uni-view{
+					padding: 5px 15px;
+					border-radius: 50px;
+					border: 1px solid #C0C0C0;
+					margin: 0 5px 5px 0;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+				uni-icon{
+					transform: rotate(45deg);
+				}
+				.active{
+					border: 1px solid #6a77b6;
+				}
+			}
+			.ensure-btn{
+				width: 90%;
+				height: 40px;
+				color: white;
+				line-height: 40px;
+				font-size: 16px;
+				border-radius: 40px;
+				background: linear-gradient(135deg,#f2140c,#f2270c 70%,#f24d0c);
+			}
+		}
+		.set-default{
+			width: 100%;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			padding: 12px 10px;
+			.title{
+				width: 80%;
+				display: flex;
+				justify-content: center;
+				flex-direction: column;
+				align-items: flex-start;
+				uni-text:first-of-type{
+					font-size: 14px;
+				}
+				uni-text:last-of-type{
+					font-size: 13px;
+					color: #c8c8c8;
+					margin-top: 5px;
+				}
 			}
 		}
 	}
 	.picker-div{
 		width: 100%;
 		height: 100%;
-		background: rgba(0,0,0,0.1);
+		background: rgba(0,0,0,0.2);
 		position: fixed;
 		bottom: 0;
 		left: 0;
 		padding: 0;
+		z-index: 1;
 		.picker-view {
 		        width: 100%;
 		        height: 300px;
