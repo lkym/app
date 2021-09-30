@@ -2,11 +2,11 @@
 	<view class="container">
 		<view class="input-content">
 			<view class="title">收货人</view>
-			<input class="uni-input" focus placeholder="姓名" v-model="name" />
+			<input class="uni-input" placeholder="姓名" v-model="name" />
 		</view>
 		<view class="input-content">
 			<view class="title">联系方式</view>
-			<input class="uni-input" focus placeholder="手机号码" v-model="phone" />
+			<input class="uni-input" placeholder="手机号码" v-model="phone" />
 		</view>
 		<view class="input-content">
 			<view class="title">所在地区</view>
@@ -38,7 +38,7 @@
 		</view>
 		<view class="input-content">
 			<view class="title">详细地址</view>
-			<textarea @blur="getDetailAddress" placeholder-style="color:#dcdbdb" placeholder="详细地址需填写楼栋楼层或房间号信息"/>
+			<textarea v-model="detailAddress" @blur="getDetailAddress" placeholder-style="color:#dcdbdb" placeholder="详细地址需填写楼栋楼层或房间号信息"/>
 		</view>
 		<view class="input-content">
 			<view class="title">地址标签</view>
@@ -61,7 +61,7 @@
 				<text>提醒: 每次下单会默认推荐该地址</text>
 			</view>
 			<view class="">
-				<switch color="#f2270c" @change="setDefaultAddress"/>
+				<switch color="#f2270c" :checked="defaultStatus" @change="setDefaultAddress"/>
 			</view>
 			
 		</view>
@@ -75,6 +75,7 @@
 	export default {
 		data() {
 			return {
+				userId: '',
 				name: '',
 				phone: '',
 				// country:['请选择','中国', '港澳地区', '外国'],
@@ -94,11 +95,37 @@
 					{"sign":"学校","checked":false},
 					],
 				addressSign: '',
-				default: false
+				defaultStatus: false
 			}
+		},
+		onShow() {
+			// console.log(getCurrentPages()[0]);
+			const options = getCurrentPages()[0].options
+			if(options.name&&options.phone&&options.area&&options.detailArea&&options.defaultStatus){
+				uni.showLoading({
+					title: '加载中',
+					mask: true,
+				})
+				this.userId = options.userId
+				this.name = options.name
+				this.phone = options.phone
+				this.chooseAddress = options.area.replace(/,/g," ")
+				this.detailAddress = options.detailArea
+				this.defaultStatus = options.defaultStatus==1?true:false
+				uni.hideLoading()
+			}else{
+				getCurrentPages()[0].userId = options.id
+			}
+			// console.log(getCurrentPages()[0]);
+			
+			
 		},
 		methods: {
 			toChooseAddress(id,level){
+				uni.showLoading({
+					title: '加载中',
+					mask: true,
+				})
 				if(id == undefined){
 					id = 1
 				}
@@ -132,6 +159,7 @@
 							
 						}else if(level == 3){
 							_this.district = res.result.data
+							uni.hideLoading()
 						}
 						
 						_this.visible = true
@@ -212,22 +240,40 @@
 				this.addressSign =	this.addressSignArr[index].sign
 			},
 			setDefaultAddress(e){
-				this.default = e.target.value
+				this.defaultStatus = e.target.value
 			},
 			getDetailAddress(e){
 				this.detailAddress = e.detail.value
 			},
 			addAddress(){
+				const area = this.chooseAddress.split(" ")
+				area.splice(0,1)
 				const addressInfo = {
 					name: this.name,
 					phone: this.phone,
-					area: this.chooseAddress.split(" "),
+					area,
 					detailArea: this.detailAddress,
 					addressSign: this.addressSign,
-					default: this.default,
+					default: this.defaultStatus?1:0,
+					userId: this.userId
 				}
 				
-				console.log(addressInfo);
+				uniCloud.callFunction({
+					name: "saveAddress",
+					data: addressInfo,
+					success(res) {
+						if(res.result){
+							uni.navigateTo({
+								url:"../myAddress/myAddress"
+							})
+						}else{
+							uni.showToast({
+								title: '请填写规范！！',
+								duration: 2000
+							})
+						}
+					}
+				})
 			}
 		},
 	}

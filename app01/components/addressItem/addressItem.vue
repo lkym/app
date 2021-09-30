@@ -11,12 +11,12 @@
 						<text>默认</text>
 					</view>
 					<view class="address-detail">
-						{{item.detailArea}}
+						{{item.area.join("")}}{{item.detailArea}}
 					</view>
 				</view>
 			</view>
 			<view class="content-edit">
-				<text>编辑</text>
+				<text @tap="editAddress(item.userId,item.name,item.phone,item.area,item.detailArea,item.default)">编辑</text>
 			</view>
 		</view>
 	</view>
@@ -32,7 +32,17 @@
 			};
 		},
 		mounted() {
-			console.log(this.$props);
+			
+			console.log(getCurrentPages());
+			
+			
+		},
+		methods:{
+			editAddress(userId,name,phone,area,detailArea,defaultStatus){
+				uni.navigateTo({
+					url:"../../pages/addAddress/addAddress?userId="+userId+"&name="+name+"&phone="+phone+"&area="+area.join(",")+"&detailArea="+detailArea+"&defaultStatus="+defaultStatus
+				})
+			}
 		}
 		
 	}

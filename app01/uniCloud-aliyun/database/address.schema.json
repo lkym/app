@@ -12,17 +12,27 @@
 		"_id": {
 			"description": "ID，系统自动生成"
 		},
+		"userId":{
+			"description":"用户ID",
+			"bsonType":"string",
+			"foreignKey": "user._id"  // 关联用户表的ID
+			
+		},
 		"name": {
 			"description":"收货人姓名",
 			"bsonType":"string",
+			"minLength": 1,
+			"maxLength": 99,
+			"errorMessage":"收货人输入不符合要求",
 			"permission":{
 				"read":"true",
 				"write":"true"
 			}	
 		},
 		"phone": {
-			"description":"用户ID，用于关联用户表",
+			"description":"用户手机号",
 			"bsonType":"string",
+			"errorMessage":"手机号输入不符合要求",
 			"permission":{
 				"read":"true",
 				"write":"false"
@@ -39,6 +49,9 @@
 		"detailArea":{
 			"description":"详细地址",
 			"bsonType":"string",
+			"minLength": 1,
+			"maxLength": 200,
+			"errorMessage":"详细地址不符合要求",
 			"permission":{
 				"read": "true",
 				"write":"true"
@@ -47,6 +60,8 @@
 		"addressSign":{
 			"description":"地址标签",
 			"bsonType":"string",
+			"minLength": 1,
+			"maxLength": 10,
 			"permission":{
 				"read":"true",
 				"write":"true"

@@ -13,23 +13,23 @@
 <script>
 	export default {
 		onShow: () => {
-			const phone = uni.getStorage({
-				key:"userInfo"
-			}).then((res)=>{
-				if(res.length>1){
-					uniCloud.callFunction({
-						name: 'address',
-						data: {"phone" : res[1].data.phone},
-						success(res) {
-							getCurrentPages()[0].addressList = res.result.data
-							
-						},
-						fail() {
-							console.log("地址获取错误!!");
-						}
-					})
+			uni.showLoading({
+				title: '加载中',
+				mask: true,
+			})
+			uniCloud.callFunction({
+				name: 'address',
+				data: {"userId" : getCurrentPages()[0].options.id},
+				success(res) {
+					getCurrentPages()[0].addressList = res.result.data
+					uni.hideLoading()
+				},
+				fail() {
+					console.log("地址获取错误!!");
 				}
 			})
+		
+			
 			
 			
 		},
@@ -37,12 +37,13 @@
 			return {
 				title:"收货地址",
 				addressList: [],
+				userId: '',
 			}
 		},
 		methods: {
 			addAddress(){
 				uni.navigateTo({
-					url:"../addAddress/addAddress"
+					url:"../addAddress/addAddress?userId=" + this.userId
 				})
 			}
 		}
