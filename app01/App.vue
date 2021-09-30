@@ -5,6 +5,16 @@
 			// console.log('App Launch')
 		},
 		onShow: function() {
+			//检测网络状态
+			uni.getNetworkType({
+				success:  (res)=>{
+					console.log(res);
+				}
+			});
+			//监听网络状态变化
+			uni.onNetworkStatusChange((res)=>{
+				console.log(res);
+			});
 			// console.log('App Show')
 		},
 		onHide: function() {
