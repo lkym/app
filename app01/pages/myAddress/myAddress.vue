@@ -17,11 +17,13 @@
 				title: '加载中',
 				mask: true,
 			})
+			
+			getCurrentPages()[getCurrentPages().length-1].userId = getCurrentPages()[getCurrentPages().length-1].options.id
 			uniCloud.callFunction({
 				name: 'address',
-				data: {"userId" : getCurrentPages()[0].options.id},
+				data: {"userId" : getCurrentPages()[getCurrentPages().length-1].options.id},
 				success(res) {
-					getCurrentPages()[0].addressList = res.result.data
+					getCurrentPages()[getCurrentPages().length-1].addressList = res.result.data
 					uni.hideLoading()
 				},
 				fail() {

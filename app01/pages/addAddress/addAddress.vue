@@ -99,24 +99,44 @@
 			}
 		},
 		onShow() {
-			// console.log(getCurrentPages()[0]);
-			const options = getCurrentPages()[0].options
-			if(options.name&&options.phone&&options.area&&options.detailArea&&options.defaultStatus){
+			console.log(getCurrentPages()[getCurrentPages().length-1]);
+			const pagesData = getCurrentPages()[getCurrentPages().length-1]
+			const options = pagesData.options
+			if(options._Id){
 				uni.showLoading({
 					title: '加载中',
 					mask: true,
 				})
-				this.userId = options.userId
-				this.name = options.name
-				this.phone = options.phone
-				this.chooseAddress = options.area.replace(/,/g," ")
-				this.detailAddress = options.detailArea
-				this.defaultStatus = options.defaultStatus==1?true:false
-				uni.hideLoading()
+				uniCloud.callFunction({
+					name:"address",
+					data: {
+						"_id":options._Id
+					},
+					success(res) {
+						res.result.data.forEach((item,index)=>{
+						pagesData.userId = item.userId
+						pagesData.name = item.name
+						pagesData.phone = item.phone
+						pagesData.chooseAddress = item.area.join().replace(/,/g," ")
+						pagesData.detailAddress = item.detailArea
+						pagesData.addressSign = item.addressSign
+						pagesData.addressSignArr.forEach((it,i)=>{
+							if(it.sign == pagesData.addressSign){
+								it.checked = true
+							}
+						})
+						pagesData.defaultStatus = item.default==1?true:false
+						uni.hideLoading()
+				})
+					}
+				})
+				
+				
+				
 			}else{
-				getCurrentPages()[0].userId = options.id
+				pagesData.userId = options.id
 			}
-			// console.log(getCurrentPages()[0]);
+			console.log(getCurrentPages());
 			
 			
 		},
@@ -247,17 +267,33 @@
 			},
 			addAddress(){
 				const area = this.chooseAddress.split(" ")
+				let addressInfo
 				area.splice(0,1)
-				const addressInfo = {
-					name: this.name,
-					phone: this.phone,
-					area,
-					detailArea: this.detailAddress,
-					addressSign: this.addressSign,
-					default: this.defaultStatus?1:0,
-					userId: this.userId
+				if(getCurrentPages()[getCurrentPages().length-1].options._Id){
+					addressInfo = {
+						name: this.name,
+						phone: this.phone,
+						area,
+						detailArea: this.detailAddress,
+						addressSign: this.addressSign,
+						default: this.defaultStatus?1:0,
+						userId: this.userId,
+						_Id: getCurrentPages()[getCurrentPages().length-1].options._Id
+					}
+				}else{
+					addressInfo = {
+						name: this.name,
+						phone: this.phone,
+						area,
+						detailArea: this.detailAddress,
+						addressSign: this.addressSign,
+						default: this.defaultStatus?1:0,
+						userId: this.userId,
+						
+					}
 				}
 				
+				console.log(addressInfo);
 				uniCloud.callFunction({
 					name: "saveAddress",
 					data: addressInfo,

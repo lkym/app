@@ -16,7 +16,7 @@
 				</view>
 			</view>
 			<view class="content-edit">
-				<text @tap="editAddress(item.userId,item.name,item.phone,item.area,item.detailArea,item.default)">编辑</text>
+				<text @tap="editAddress(item._id)">编辑</text>
 			</view>
 		</view>
 	</view>
@@ -38,9 +38,9 @@
 			
 		},
 		methods:{
-			editAddress(userId,name,phone,area,detailArea,defaultStatus){
+			editAddress(_Id){
 				uni.navigateTo({
-					url:"../../pages/addAddress/addAddress?userId="+userId+"&name="+name+"&phone="+phone+"&area="+area.join(",")+"&detailArea="+detailArea+"&defaultStatus="+defaultStatus
+					url:"../../pages/addAddress/addAddress?_Id="+_Id
 				})
 			}
 		}
