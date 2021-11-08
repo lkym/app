@@ -33,7 +33,7 @@
 		},
 		mounted() {
 			
-			console.log(getCurrentPages());
+			// console.log(getCurrentPages());
 			
 			
 		},

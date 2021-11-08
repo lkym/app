@@ -12,18 +12,28 @@
 
 <script>
 	export default {
-		onShow: () => {
+		onShow: function(){
+			const _this = this;
 			uni.showLoading({
 				title: '加载中',
 				mask: true,
 			})
 			
-			getCurrentPages()[getCurrentPages().length-1].userId = getCurrentPages()[getCurrentPages().length-1].options.id
+			_this.userId = getCurrentPages()[getCurrentPages().length-1].options.id
 			uniCloud.callFunction({
 				name: 'address',
 				data: {"userId" : getCurrentPages()[getCurrentPages().length-1].options.id},
 				success(res) {
-					getCurrentPages()[getCurrentPages().length-1].addressList = res.result.data
+					if(res.result.data.length){
+						// getCurrentPages()[getCurrentPages().length-1].addressList = res.result.data
+						_this.addressList = res.result.data
+						// console.log(_this);
+					}else{
+						uni.showToast({
+							title:'无数据'
+						})
+					}
+					
 					uni.hideLoading()
 				},
 				fail() {

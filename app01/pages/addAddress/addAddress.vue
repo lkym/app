@@ -99,9 +99,11 @@
 			}
 		},
 		onShow() {
-			console.log(getCurrentPages()[getCurrentPages().length-1]);
-			const pagesData = getCurrentPages()[getCurrentPages().length-1]
-			const options = pagesData.options
+			console.log(this);
+			const _this = this
+			const pagesData = _this
+			const options = getCurrentPages()[getCurrentPages().length-1].options
+			console.log(options);
 			if(options._Id){
 				uni.showLoading({
 					title: '加载中',
@@ -136,7 +138,7 @@
 			}else{
 				pagesData.userId = options.id
 			}
-			console.log(getCurrentPages());
+			// console.log(getCurrentPages());
 			
 			
 		},
@@ -266,29 +268,31 @@
 				this.detailAddress = e.detail.value
 			},
 			addAddress(){
-				const area = this.chooseAddress.split(" ")
 				let addressInfo
-				area.splice(0,1)
-				if(getCurrentPages()[getCurrentPages().length-1].options._Id){
+				const _this = this;
+				let area = _this.chooseAddress.split(" ")
+				
+				area = area.filter(item=>item)
+				if(getCurrentPages()[getCurrentPages().length-1].options._Id){  //  修改地址
 					addressInfo = {
-						name: this.name,
-						phone: this.phone,
+						name: _this.name,
+						phone: _this.phone,
 						area,
-						detailArea: this.detailAddress,
-						addressSign: this.addressSign,
-						default: this.defaultStatus?1:0,
-						userId: this.userId,
+						detailArea: _this.detailAddress,
+						addressSign: _this.addressSign,
+						default: _this.defaultStatus?1:0,
+						userId: _this.userId,
 						_Id: getCurrentPages()[getCurrentPages().length-1].options._Id
 					}
-				}else{
+				}else{   // 增加
 					addressInfo = {
-						name: this.name,
-						phone: this.phone,
+						name: _this.name,
+						phone: _this.phone,
 						area,
-						detailArea: this.detailAddress,
-						addressSign: this.addressSign,
-						default: this.defaultStatus?1:0,
-						userId: this.userId,
+						detailArea: _this.detailAddress,
+						addressSign: _this.addressSign,
+						default: _this.defaultStatus?1:0,
+						userId: getCurrentPages()[getCurrentPages().length-1].options.userId,
 						
 					}
 				}
@@ -299,9 +303,16 @@
 					data: addressInfo,
 					success(res) {
 						if(res.result){
-							uni.navigateTo({
-								url:"../myAddress/myAddress"
-							})
+							if(_this.userId){
+								uni.navigateTo({
+									url:"../myAddress/myAddress?id="+_this.userId
+								})
+							}else{
+								uni.navigateTo({
+									url:"../myAddress/myAddress?id="+getCurrentPages()[getCurrentPages().length-1].options.userId
+								})
+							}
+							
 						}else{
 							uni.showToast({
 								title: '请填写规范！！',

@@ -1,14 +1,13 @@
 'use strict';
 exports.main = async (event, context) => {
 	//event为客户端上传的参数
-	console.log('event : ', event._Id)
+	// console.log('event : ', event._Id)
 	const db = uniCloud.database()
 	let res
 	if(event.name == '' || event.phone == '' || event.detailArea == '' || event.addressSign == '' || event.area.length == 0){
 		return false
 	}else{
 		if(event._Id){  // 判断是否是修改地址信息
-			console.log(event);
 			if(event.default){
 				await db.collection('address').where({"userId": event.userId}).update({
 					"default": 0
