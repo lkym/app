@@ -303,13 +303,24 @@
 					data: addressInfo,
 					success(res) {
 						if(res.result){
+							let pages = getCurrentPages();
+							let prevPage = pages[pages.length - 2];
+							
 							if(_this.userId){
-								uni.navigateTo({
-									url:"../myAddress/myAddress?id="+_this.userId
+								// uni.navigateTo({
+								// 	url:"../myAddress/myAddress?id="+_this.userId
+								// })
+								prevPage.$vm.id = _this.userId
+								uni.navigateBack({
+									delta: 1,
 								})
 							}else{
-								uni.navigateTo({
-									url:"../myAddress/myAddress?id="+getCurrentPages()[getCurrentPages().length-1].options.userId
+								// uni.navigateTo({
+								// 	url:"../myAddress/myAddress?id="+getCurrentPages()[getCurrentPages().length-1].options.userId
+								// })
+								prevPage.$vm.id = getCurrentPages()[getCurrentPages().length-1].options.userId
+								uni.navigateBack({
+									delta: 1,
 								})
 							}
 							
